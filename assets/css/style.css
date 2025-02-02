@@ -1,0 +1,410 @@
+/* Main Styles for HIS 2025 Conference Website */
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    padding-top: 56px; /* Height of fixed navbar */
+}
+
+section {
+    padding: 4rem 0;
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: #008251;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.year-text {
+    color: #008251;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    margin-top: -56px;
+    position: relative;
+}
+
+.hero-section h1 {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-section .btn-success {
+    background-color: #008251;
+    border-color: #008251;
+    transition: all 0.3s ease;
+}
+
+.hero-section .btn-success:hover {
+    background-color: #006c42;
+    border-color: #006c42;
+    transform: translateY(-2px);
+}
+
+.hero-section .btn-outline-light {
+    transition: all 0.3s ease;
+}
+
+.hero-section .btn-outline-light:hover {
+    transform: translateY(-2px);
+}
+
+/* Previous Conferences Section */
+.previous-conferences {
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+.previous-conferences .card {
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.previous-conferences .card:hover {
+    transform: translateY(-5px);
+}
+
+.previous-conferences .conf-link {
+    color: #0066cc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.previous-conferences .conf-link:hover {
+    color: #004999;
+    transform: translateX(5px);
+}
+
+.previous-conferences .card-title {
+    color: #333;
+    font-weight: 600;
+}
+
+.previous-conferences .btn-link {
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0;
+    color: #008251;
+}
+
+.previous-conferences .btn-link:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+/* Sidebar Styles */
+.sidebar-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.sidebar-box h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #008251;
+}
+
+.conference-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.conference-list li:last-child {
+    border-bottom: none;
+}
+
+.conf-link {
+    color: #0066cc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.conf-link:hover {
+    color: #004999;
+    text-decoration: none;
+}
+
+
+/* Time Display Styles */
+.time-display {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.time-display h4 {
+    color: #008251;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.digital-clock {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+#hours, #minutes, #seconds {
+    background: #333;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+#session {
+    font-size: 1rem;
+    color: #666;
+    margin-left: 5px;
+}
+
+#date {
+    color: #666;
+    margin-bottom: 0.5rem;
+}   
+
+/* Welcome Section */
+.welcome-title {
+    color: #008251;
+    margin-bottom: 1.5rem;
+}
+
+
+
+/* Scope Section */
+.scope-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.scope-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Call for Papers Section */
+.paper-topics {
+    transition: all 0.3s ease;
+}
+
+.paper-topics.collapse:not(.show) {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.paper-topics.collapse:not(.show)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(transparent, white);
+}
+
+.topic-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.topic-list li {
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    transition: transform 0.3s ease;
+}
+
+.topic-list li:hover {
+    transform: translateX(10px);
+}
+
+/* Section Titles */
+.section-title {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #008251;
+}
+
+/* Buttons and Links */
+.btn-link {
+    color: #008251;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+    color: #006c42;
+    text-decoration: none;
+}
+
+.btn-success {
+    background-color: #008251;
+    border-color: #008251;
+}
+
+.btn-success:hover {
+    background-color: #006c42;
+    border-color: #006c42;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+}
+
+footer a {
+    transition: opacity 0.3s ease;
+}
+
+footer a:hover {
+    opacity: 0.8;
+}
+
+footer hr {
+    border-color: rgba(255,255,255,0.1);
+}
+
+/* Icons */
+.fas, .fab {
+    transition: transform 0.3s ease;
+}
+
+a:hover .fas,
+a:hover .fab {
+    transform: translateY(-2px);
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Read More Button Animation */
+[data-bs-toggle="collapse"] i {
+    transition: transform 0.3s ease;
+}
+
+[data-bs-toggle="collapse"][aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-section {
+        text-align: center;
+    }
+
+    .previous-conferences {
+        margin-top: 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    .nav-link {
+        padding: 0.5rem 1rem !important;
+    }
+
+    .previous-conferences .col-md-4 {
+        margin-bottom: 1rem;
+    }
+
+    .hero-section .btn {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .hero-section .d-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .hero-section .btn,
+    .paper-topics .btn-link,
+    footer {
+        display: none;
+    }
+
+    body {
+        padding-top: 0;
+    }
+
+    .hero-section {
+        height: auto;
+        min-height: auto;
+        background: none;
+        color: #000;
+    }
+
+    .hero-section h1,
+    .hero-section h2,
+    .hero-section .text-white {
+        color: #000 !important;
+        text-shadow: none;
+    }
+}
