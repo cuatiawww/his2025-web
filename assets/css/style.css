@@ -208,6 +208,52 @@ section {
 .zoom-controls {
     margin-left: auto;
 }
+/* Keynotes Speaker Styles
+   ----------------------------------------- */
+
+.keynote-speaker {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.speaker-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.speaker-name {
+    color: #008251;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.speaker-affiliation {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.talk-title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.abstract-section, .bio-section {
+    margin-top: 1.5rem;
+}
+
+.section-title {
+    color: #008251;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
 
 /* Time Display Styles
    ----------------------------------------- */

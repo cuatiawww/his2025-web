@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Program Committee - HIS 2025</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Custom CSS -->
     <link href="../assets/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -38,7 +35,6 @@
                     </tr>
                 </thead>
                 <tbody id="committeeTableBody">
-                    <!-- Table content will be populated by JavaScript -->
                 </tbody>
             </table>
         </div>
@@ -49,13 +45,13 @@
 
     <div id="footer"></div>
 
-    <!-- Scripts -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/data.js"></script>
     <script src="../assets/js/components.js"></script>
     <script src="../assets/js/clock.js"></script>
     <script>
-        // Function to populate table
+        // Function table
         function populateCommitteeTable() {
             const tableBody = document.getElementById('committeeTableBody');
             
@@ -70,8 +66,6 @@
                 tableBody.appendChild(row);
             });
         }
-
-        // Initialize when document is loaded
         document.addEventListener('DOMContentLoaded', function() {
             populateCommitteeTable();
         });
