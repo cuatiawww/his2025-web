@@ -7,7 +7,6 @@ function getCurrentPage() {
 }
 
 // Topics rendering with modern styling
-// Topics rendering with modern styling
 async function renderTopics() {
     const topicsList = document.getElementById('topicsList');
     if (!topicsList) return;
@@ -69,6 +68,51 @@ function renderDates() {
     datesList.querySelectorAll('.date-item-wrapper').forEach((item, index) => {
         item.style.animationDelay = `${index * 0.1}s`;
     });
+}
+
+
+async function renderCommitteeMembers() {
+    const committeeMembersList = document.getElementById('committeeMembersList');
+    if (!committeeMembersList) return;
+
+    try {
+        const members = await dbOperations.getCommitteeMembers();
+        
+        if (!members || members.length === 0) {
+            committeeMembersList.innerHTML = '<p>No committee members available</p>';
+            return;
+        }
+
+        committeeMembersList.innerHTML = `
+            <div class="row">
+                ${members.map(member => `
+                    <div class="col-md-6 mb-4 fade-in">
+                        <div class="committee-member">
+                            <h3 class="member-name">
+                                ${member.first_name} ${member.last_name}
+                            </h3>
+                            <p class="member-affiliation">
+                                ${member.affiliation}
+                            </p>
+                            <p class="member-email">
+                                <a href="mailto:${member.email}">
+                                    <i class="fas fa-envelope me-2"></i>${member.email}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+
+        // Add animation effects
+        committeeMembersList.querySelectorAll('.fade-in').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+        });
+    } catch (err) {
+        console.error('Error:', err);
+        committeeMembersList.innerHTML = '<p>Failed to load committee members</p>';
+    }
 }
 
 // Guidelines rendering with modern styling

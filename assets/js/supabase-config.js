@@ -49,6 +49,27 @@ const dbOperations = {
             return null;
         }
     },
+    getCommitteeMembers: async () => {
+        try {
+            const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/committee_members?select=*&order=last_name.asc`, {
+                headers: {
+                    'apikey': SUPABASE_CONFIG.apiKey,
+                    'Authorization': `Bearer ${SUPABASE_CONFIG.apiKey}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (err) {
+            console.error('Error fetching committee members:', err);
+            return null;
+        }
+    },
 
 };
 
