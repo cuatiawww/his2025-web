@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Venue - HIS 2024</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <style>
+        .venue-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            color: #008251;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #008251;
+        }
+        
+        .venue-map {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: none;
+        }
+        
+        .transport-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #008251;
+        }
+        
+        .transport-title {
+            font-weight: bold;
+            color: #008251;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-link {
+            color: #008251;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .info-link:hover {
+            color: #006c42;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Hero Banner -->
+    <header class="hero-banner venue-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="display-4 text-white text-center">HIS 2024 @ Bandung</h1>
+                <h2 class="h2 text-white text-center">Conference Venue</h2>
+            </div>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Venue Information -->
+                <div class="venue-section">
+                    <h3 class="section-title">Conference Venue</h3>
+                    <p><strong>Address:</strong> E-G/F, The Education University of Hong Kong conference centre, 10 Lo Ping Road, Tai Po, New Territories, Hong Kong</p>
+                    
+                    <!-- Google Maps Embed -->
+                    <iframe class="venue-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500.5407834425097!2d114.19191232357688!3d22.467547845756433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340407d0a6947d57%3A0x40d7d0ecc87c012c!2sThe%20Education%20University%20of%20Hong%20Kong!5e0!3m2!1sen!2sid!4v1707022433416!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+                    
+                    <p>Please explore the conference centre by the <a href="#" class="info-link">360° View</a>.</p>
+                    <p>For more information about the campus map of The Education University of Hong Kong, please refer to the <a href="#" class="info-link">EDUHK CAMPUS MAP</a>.</p>
+                </div>
+
+                <!-- About EdUHK -->
+                <div class="venue-section">
+                    <h3 class="section-title">About EdUHK</h3>
+                    <p>The Education University of Hong Kong (EdUHK) is a publicly funded tertiary institution dedicated to the advancement of teaching and learning, through a diverse offering of academic and research programmes on teacher education and complementary social sciences and humanities disciplines.</p>
+                    <p>EdUHK nurtures educators and social leaders who are intellectually active, socially caring, and globally aware, to become agents of change in the communities that they serve. EdUHK places great emphasis on research capability — research will contribute to the advancement of knowledge, scholarship and innovation, with sustainable impact on social progress and human betterment.</p>
+                </div>
+
+                <!-- Getting to EdUHK -->
+                <div class="venue-section">
+                    <h3 class="section-title">Getting to EdUHK</h3>
+                    <p>The Education University of Hong Kong is located in Tai Po, New Territories, Hong Kong. The campus is easily accessible by public transportation.</p>
+                    
+                    <div class="transport-item">
+                        <div class="transport-title">From Hong Kong International Airport to EdUHK:</div>
+                        <p>Take a taxi to EdUHK direct (about HK$350-HK$400), or take Airbus E41 to Tai Po Centre then change to bus 74K or taxi (about HK$40)</p>
+                    </div>
+
+                    <div class="transport-item">
+                        <div class="transport-title">From Shenzhen to EdUHK:</div>
+                        <p>Take MTR train from Lo Wu to Tai Po Market Station then change to bus 74K (<a href="#" class="info-link">details</a>) or taxi (about HK$40)</p>
+                    </div>
+
+                    <div class="transport-item">
+                        <div class="transport-title">From Hung Hom MTR Station to EdUHK:</div>
+                        <p>Take MTR train to Tai Po Market Station then change to bus 74K (<a href="#" class="info-link">details</a>) or taxi (about HK$40)</p>
+                    </div>
+
+                    <p>For more transportation information, please refer to the <a href="#" class="info-link">EdUHK Visitors</a>.</p>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4" id="sidebar"></div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/clock.js"></script>
+</body>
+</html>

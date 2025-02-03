@@ -46,8 +46,9 @@ const components = {
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="participantDropdown">
                                 <li><a class="dropdown-item" href="pages/participant.html#registration">Registration</a></li>
-                                <li><a class="dropdown-item" href="pages/participant.html#venue">Venue & Accommodation</a></li>
-                                <li><a class="dropdown-item" href="pages/participant.html#travel">Travel Information</a></li>
+                                <li><a class="dropdown-item" href="pages/conference-venue.html">Venue & Accommodation</a></li>
+                                <li><a class="dropdown-item" href="pages/travel-information.html">Travel Information</a></li>
+                                <li><a class="dropdown-item" href="pages/hotel-booking.html">Hotel Booking</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -108,12 +109,10 @@ function loadComponent(elementId) {
     const element = document.getElementById(elementId);
     if (!element) return;
 
-    // Sesuaikan path untuk links berdasarkan lokasi halaman
     const isInPagesDirectory = window.location.pathname.includes('/pages/');
     let componentHtml = components[elementId];
 
     if (isInPagesDirectory) {
-        // Jika di folder pages, sesuaikan path
         componentHtml = componentHtml
             .replace(/href="index.html"/g, 'href="../index.html"')
             .replace(/href="pages\//g, 'href="');
@@ -123,7 +122,8 @@ function loadComponent(elementId) {
 
     // Inisialisasi komponen setelah dimuat
     if (elementId === 'header') {
-        updateActiveNavLink();
+        // Tunggu sedikit untuk memastikan DOM sudah siap
+        setTimeout(updateActiveNavLink, 100);
     }
     if (elementId === 'sidebar') {
         renderConferences();
@@ -134,15 +134,24 @@ function loadComponent(elementId) {
 function updateActiveNavLink() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-link');
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
     
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (currentPath.endsWith(link.getAttribute('href'))) {
-            link.classList.add('active');
+    // Reset semua active state
+    navLinks.forEach(link => link.classList.remove('active'));
+    dropdownItems.forEach(item => item.classList.remove('active'));
+
+    // Set active untuk dropdown items
+    dropdownItems.forEach(item => {
+        const itemPath = item.getAttribute('href');
+        if (itemPath && currentPath.includes(itemPath.split('/').pop())) {
+            item.classList.add('active');
+            // Aktifkan parent dropdown
+            const parentDropdown = item.closest('.dropdown').querySelector('.nav-link');
+            if (parentDropdown) parentDropdown.classList.add('active');
         }
     });
 
-    // Set home sebagai active jika di root
+    // Set active untuk home jika di halaman utama
     if (currentPath === '/' || currentPath.endsWith('index.html')) {
         document.querySelector('a[href$="index.html"]')?.classList.add('active');
     }

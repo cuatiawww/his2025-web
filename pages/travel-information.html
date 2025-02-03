@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Information - HIS 2024</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <style>
+        .info-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            color: #008251;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #008251;
+        }
+        
+        .travel-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #008251;
+        }
+        
+        .travel-icon {
+            color: #008251;
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+        
+        .info-link {
+            color: #008251;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .info-link:hover {
+            color: #006c42;
+            text-decoration: underline;
+        }
+
+        .alert-info-custom {
+            background-color: #e8f5f3;
+            border-color: #008251;
+            color: #333;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Hero Banner -->
+    <header class="hero-banner">
+        <img src="/api/placeholder/1200/300" alt="Hong Kong Cityscape" class="hero-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="display-4 text-white text-center">HIS 2024 @ Hong Kong</h1>
+                <h2 class="h2 text-white text-center">Travel Information</h2>
+            </div>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Going to Hong Kong -->
+                <div class="info-section">
+                    <h3 class="section-title">Going to Hong Kong</h3>
+                    
+                    <div class="travel-item">
+                        <h4><i class="fas fa-plane travel-icon"></i>By Air</h4>
+                        <p>Hong Kong can be reached very easily from any place in the world. The Hong Kong International Airport is a major hub in Asia, with direct flights to many cities in Asia, Australia, Europe, and North America.</p>
+                        <p>There is a highly efficient subway system connecting the airport and downtown, bringing our arriving guests to Kowloon and Central in less than 30 minutes. Airbus carries passengers to a large variety of places within the city in about an hour, inclusive of the conference venue.</p>
+                    </div>
+
+                    <div class="travel-item">
+                        <h4><i class="fas fa-train travel-icon"></i>By High Speed Rail</h4>
+                        <p>The High Speed Rail Hong Kong offers high speed train services to major cities in China, providing a lower cost and yet efficient travel alternative.</p>
+                    </div>
+
+                    <div class="travel-item">
+                        <h4><i class="fas fa-subway travel-icon"></i>From Southern China</h4>
+                        <p>Visitors staying in southern part of China may also travel directly to the Hung Hum station by train. The station is located right next to the university and within walking distance to the conference hotel.</p>
+                    </div>
+
+                    <p>For more information, please refer to the <a href="#" class="info-link">Hong Kong Tourism Board</a>.</p>
+                </div>
+
+                <!-- Visa Information -->
+                <div class="info-section">
+                    <h3 class="section-title">Visa to Hong Kong</h3>
+                    
+                    <div class="alert alert-info-custom">
+                        <i class="fas fa-info-circle travel-icon"></i>
+                        For citizens of a majority of countries in the world, no visa is required for visiting Hong Kong, as long as the length of the stay does not exceed the specified period (from 7 to 90 days).
+                    </div>
+
+                    <p>Please refer to the <a href="#" class="info-link">HKSAR visa requirements</a> (under item 12) at the Hong Kong Government web site to confirm whether you need a visa, and the length of stay without a visa.</p>
+
+                    <div class="travel-item">
+                        <h4><i class="fas fa-envelope travel-icon"></i>Visa Application Letter</h4>
+                        <p>If you need a letter for visa application, please email to <a href="mailto:siuly@mail.com" class="info-link">Dr Siuly</a>.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4" id="sidebar"></div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/clock.js"></script>
+</body>
+</html>
