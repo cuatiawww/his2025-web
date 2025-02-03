@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="header"></div>
-     <header class="hero-banner keynotes-banner">
+    <header class="hero-banner keynotes-banner">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="container">
@@ -22,71 +22,116 @@
 
     <div class="container py-5">
         <div class="row">
-            <div class="col-lg-8">
-                <div class="keynote-speaker">
-                    <div class="d-flex flex-column flex-md-row">
-                        <div class="me-md-4 text-center text-md-start">
-                            <img src="../assets/images/foto.jpg.crdownload" alt="Qun Jin" class="speaker-photo">
-                        </div>
-                        <div>
-                            <h3 class="speaker-name">Qun Jin</h3>
-                            <p class="speaker-affiliation">Department of Human Informatics and Cognitive Sciences, Waseda University, Japan</p>
-                            
-                            <div class="talk-details">
-                                <div class="talk-title">
-                                    <strong>Title:</strong> Understanding and Promoting Human Health through Convergent Research and with Technology Convergence of Big Data and AI
-                                </div>
-                                
-                                <div class="abstract-section">
-                                    <div class="section-title">Abstract:</div>
-                                    <p>The purpose of science and technology development around the world is shifting to human well-being. The grand challenges facing human society in the twenty-first century, such as protecting human health and promoting human well-being, cannot be solved by one discipline alone. Comprehensive use of convergence knowledge, the merging of insights obtained through convergent research from widely diverse fields, can be expected to address these challenges. Convergence is a process that stimulates innovation and discovery and leads to the creation of new problem-driven solutions by multidisciplinary and interdisciplinary collaborations.</p>
-                                </div>
-                                
-                                <div class="bio-section">
-                                    <div class="section-title">Bio:</div>
-                                    <p>Qun Jin is a professor in the Department of Human Informatics and Cognitive Sciences, Faculty of Human Sciences, Waseda University, Japan. He has been extensively engaged in research works in the fields of computer science, information systems, and human informatics, with a focus on understanding and supporting humans through convergent research...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="keynote-speaker">
-                    <div class="d-flex flex-column flex-md-row">
-                        <div class="me-md-4 text-center text-md-start">
-                            <img src="../assets/images/foto2.jpg.crdownload" alt="Qun Jin" class="speaker-photo">
-                        </div>
-                        <div>
-                            <h3 class="speaker-name">Chunxiao Xing</h3>
-                            <p class="speaker-affiliation">Department of Computer Science and Technology BNRist Institute of Internet Industry, Tsinghua University, Beijing, China</p>
-                            
-                            <div class="talk-details">
-                                <div class="talk-title">
-                                    <strong>Title:</strong> Huading Medical AI System - Research and Application of Large Models for Smart Healthcare
-                                </div>
-                                
-                                <div class="abstract-section">
-                                    <div class="section-title">Abstract:</div>
-                                    <p>The report introduces the research foundation of information science and technology at Tsinghua University, analyzes the development trend of the new generation of information technology, discusses the core technology of the new generation of information technology, describes the latest progress and development trend of smart healthcare...</p>
-                                </div>
-                                
-                                <div class="bio-section">
-                                    <div class="section-title">Bio:</div>
-                                    <p>Dr. Chunxiao Xing was born in December 1967. He is a professor of the Tsinghua University Beijing National Research Center for Information Science and Technology(BNRist), dean of Tsinghua University-Client Service International Inc. Joint Institute for Advanced Intelligent Database (JI-AIDB)...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-lg-8" id="keynotesList">
+                <!-- Keynote speakers will be populated here -->
             </div>
-            
             <div class="col-lg-4" id="sidebar"></div>
         </div>
     </div>
 
     <div id="footer"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/supabase-config.js"></script>
     <script src="../assets/js/components.js"></script>
     <script src="../assets/js/clock.js"></script>
+    <script>
+        async function renderKeynotes() {
+            const keynotesContainer = document.getElementById('keynotesList');
+            
+            try {
+                const speakers = await dbOperations.getKeynotesSpeakers();
+                
+                if (!speakers || speakers.length === 0) {
+                    keynotesContainer.innerHTML = '<p>No keynote speakers available</p>';
+                    return;
+                }
+
+                keynotesContainer.innerHTML = speakers.map(speaker => `
+                    <div class="keynote-speaker mb-5 fade-in">
+                        <div class="d-flex flex-column flex-md-row">
+                            <div class="me-md-4 text-center text-md-start mb-3 mb-md-0">
+                                <img src="../assets/images/${speaker.photo_url}" alt="${speaker.name}" class="speaker-photo">
+                            </div>
+                            <div>
+                                <h3 class="speaker-name">${speaker.name}</h3>
+                                <p class="speaker-affiliation">${speaker.affiliation}</p>
+                                
+                                <div class="talk-details">
+                                    <div class="talk-title">
+                                        <strong>Title:</strong> ${speaker.talk_title}
+                                    </div>
+                                    
+                                    <div class="abstract-section">
+                                        <div class="section-title">Abstract:</div>
+                                        <p>${speaker.abstract}</p>
+                                    </div>
+                                    
+                                    <div class="bio-section">
+                                        <div class="section-title">Bio:</div>
+                                        <p>${speaker.bio}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Add animation effects
+                keynotesContainer.querySelectorAll('.fade-in').forEach((item, index) => {
+                    item.style.animationDelay = `${index * 0.2}s`;
+                });
+
+            } catch (err) {
+                console.error('Error:', err);
+                keynotesContainer.innerHTML = '<p>Failed to load keynote speakers</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', renderKeynotes);
+    </script>
+
+    <style>
+        .keynote-speaker {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .speaker-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .speaker-name {
+            color: #198754;
+            margin-bottom: 0.5rem;
+        }
+
+        .speaker-affiliation {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #198754;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </body>
 </html>

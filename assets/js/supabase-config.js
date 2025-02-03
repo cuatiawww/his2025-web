@@ -70,6 +70,27 @@ const dbOperations = {
             return null;
         }
     },
+    getKeynotesSpeakers: async () => {
+        try {
+            const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/keynote_speakers?select=*`, {
+                headers: {
+                    'apikey': SUPABASE_CONFIG.apiKey,
+                    'Authorization': `Bearer ${SUPABASE_CONFIG.apiKey}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            return data;
+        } catch (err) {
+            console.error('Error fetching keynote speakers:', err);
+            return null;
+        }
+    },
 
 };
 
