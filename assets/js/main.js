@@ -1,148 +1,119 @@
-// Main JavaScript for HIS 2025 Website
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Add smooth scrolling to all links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-        const navbar = document.querySelector('.navbar');
-        const navbarToggler = document.querySelector('.navbar-toggler');
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-        
-        if (!navbar.contains(e.target) && navbarCollapse.classList.contains('show')) {
-            navbarToggler.click();
-        }
-    });
-
-    // Add fade-in animation to sections
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observe all sections
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
-
-    // Active nav link handling
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - 60) {
-                current = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(current)) {
-                link.classList.add("active");
-            }
-        });
-    });
-
-    // Add animation to scope items on hover
-    const scopeItems = document.querySelectorAll('.scope-item');
-    scopeItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-        });
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-
-    // Add parallax effect to hero section
-    window.addEventListener('scroll', function() {
-        const heroSection = document.querySelector('.hero-section');
-        const scrolled = window.pageYOffset;
-        if (heroSection) {
-            heroSection.style.backgroundPositionY = (scrolled * 0.5) + 'px';
-        }
-    });
-});
-
-// Function to handle form submissions if needed
-function handleSubmit(event) {
-    event.preventDefault();
-    // Add form handling logic here
+// main.js
+function getCurrentPage() {
+    const path = window.location.pathname;
+    if (path.includes('/call.html')) return 'call';
+    if (path.includes('/index.html') || path.endsWith('/')) return 'index';
+    return '';
 }
 
-// Function to toggle mobile menu
-function toggleMobileMenu() {
-    const navbarCollapse = document.querySelector('.navbar-collapse');
-    navbarCollapse.classList.toggle('show');
-}
-
-// Function to handle scroll to top
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-// Initialize tooltips if using Bootstrap tooltips
-if (typeof bootstrap !== 'undefined') {
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-}
-
-
-// Function to render conference list
-function renderConferences() {
-    const conferenceList = document.getElementById('conferenceList');
-    if (!conferenceList) return;
-
-    conferenceList.innerHTML = conferenceData.previousConferences
-        .map(conf => `
-            <li>
-                <a href="#" class="conf-link">HIS ${conf.year}</a> - ${conf.location}
-            </li>
-        `).join('');
-}
-
-// Function to render call for papers topics
+// Render topics list
 function renderTopics() {
-    const topicsList = document.getElementById('paperTopicsList');
-    if (!topicsList) return;
+    const topicsList = document.getElementById('topicsList');
+    if (!topicsList || !conferenceData?.callForPapers) return;
 
-    topicsList.innerHTML = conferenceData.callForPapers
-        .map(topic => `
-            <li>
+    const topics = conferenceData.callForPapers.map(topic => `
+        <li>
+            <div class="p-2 bg-light">
                 <i class="fas fa-check text-success me-2"></i>${topic}
-            </li>
-        `).join('');
+            </div>
+        </li>
+    `).join('');
+
+    topicsList.innerHTML = topics;
 }
 
-// Initialize when DOM is loaded
+// Render submission dates
+function renderDates() {
+    const datesList = document.getElementById('datesList');
+    if (!datesList || !conferenceData?.importantDates) return;
+
+    const dates = conferenceData.importantDates.map(date => `
+        <li class="mb-3">
+            <div class="date-item p-3 bg-light rounded">
+                <div class="date-label fw-bold">${date.label}</div>
+                <div class="date-value">
+                    ${date.oldDate ? `<s>${date.oldDate}</s> ` : ''}
+                    <span class="text-success">${date.newDate || date.date}</span>
+                </div>
+            </div>
+        </li>
+    `).join('');
+
+    datesList.innerHTML = dates;
+}
+
+function renderGuidelines() {
+    const guidelinesBox = document.getElementById('guidelinesBox');
+    if (!guidelinesBox || !conferenceData?.submissionGuidelines) return;
+
+    const mainText = conferenceData.submissionGuidelines.mainText;
+    const submission = conferenceData.submissionGuidelines.submissionLink;
+
+    const guidelinesHtml = `
+        <div class="submission-text mb-4">
+            <p>
+                ${mainText.text}
+                <a class="fw-bold" href="${mainText.springerLink.url}" target="_blank" class="text-success">
+                    ${mainText.springerLink.text}
+                </a>
+                ${mainText.endText}
+            </p>
+            <p class="fw-bold">
+                ${submission.text}
+                <a href="${submission.link.url}" target="_blank" class="text-success">
+                    ${submission.link.text}
+                </a>.
+            </p>
+        </div>
+       
+    `;
+
+    guidelinesBox.innerHTML = guidelinesHtml;
+}
+
+// Render publications info
+function renderPublications() {
+    const publicationsBox = document.getElementById('publicationsBox');
+    if (!publicationsBox || !conferenceData?.publications) return;
+
+    const publications = conferenceData.publications.map(publication => `
+        <div class="publication-item mb-3 p-3 bg-light rounded">
+            <i class="fas fa-book text-success me-2"></i>${publication}
+        </div>
+    `).join('');
+
+    publicationsBox.innerHTML = publications;
+}
+
+// Initialize page content
 document.addEventListener('DOMContentLoaded', function() {
-    renderConferences();
+    const currentPage = getCurrentPage();
+
+    // Initialize common elements
     renderTopics();
+
+    // Initialize page-specific elements
+    if (currentPage === 'call') {
+        renderDates();
+        renderGuidelines();
+        renderPublications();
+    }
+
+    // Initialize Bootstrap tooltips if available
+    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+            new bootstrap.Tooltip(el);
+        });
+    }
 });
+
+
+
+
+{/* <div class="guidelines-list">
+${conferenceData.submissionGuidelines.guidelines.map(guideline => `
+    <div class="guideline-item mb-3 p-3 bg-light rounded">
+        <i class="fas fa-check-circle text-success me-2"></i>${guideline}
+    </div>
+`).join('')}
+</div> */}

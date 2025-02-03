@@ -1,30 +1,27 @@
-/* Main Styles for HIS 2025 Conference Website */
+/* ===========================================
+   Main Styles for HIS 2025 Conference Website 
+   ========================================== */
 
-/* General Styles */
-body {
+/* Base & General Styles
+   ----------------------------------------- */
+   body {
     font-family: 'Arial', sans-serif;
-    padding-top: 56px; /* Height of fixed navbar */
+    color: #333;
+    line-height: 1.6;
 }
 
 section {
-    padding: 4rem 0;
+    padding: 3rem 0;
 }
 
-/* Navigation */
+/* Navigation Styles
+   ----------------------------------------- */
 .navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: #000;
-    font-weight: 500;
-    padding: 1rem 1.5rem;
-    transition: color 0.3s ease;
-}
-
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .nav-link.active {
-    color: #008251;
+    position: absolute; 
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    transition: background 0.3s ease;
 }
 
 .navbar-brand {
@@ -36,90 +33,49 @@ section {
 
 .year-text {
     color: #008251;
+    margin-left: 4px;
 }
 
-/* Hero Section */
-.hero-section {
-    min-height: 100vh;
+.navbar-light .navbar-nav .nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 0.8rem 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: #008251;
+}
+
+/* Hero Section Styles
+   ----------------------------------------- */
+.hero-section, .hero-banner {
+    min-height: 100vh;  /* Ubah jadi 100vh */
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
-    margin-top: -56px;
     position: relative;
+    margin-top: 0;  /* Hapus margin-top negatif */
 }
 
 .hero-section h1 {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.hero-section .btn-success {
-    background-color: #008251;
-    border-color: #008251;
-    transition: all 0.3s ease;
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
 }
 
-.hero-section .btn-success:hover {
-    background-color: #006c42;
-    border-color: #006c42;
-    transform: translateY(-2px);
-}
-
-.hero-section .btn-outline-light {
-    transition: all 0.3s ease;
-}
-
-.hero-section .btn-outline-light:hover {
-    transform: translateY(-2px);
-}
-
-/* Previous Conferences Section */
-.previous-conferences {
-    margin-top: -50px;
-    position: relative;
-    z-index: 10;
-}
-
-.previous-conferences .card {
-    border: none;
-    transition: transform 0.3s ease;
-}
-
-.previous-conferences .card:hover {
-    transform: translateY(-5px);
-}
-
-.previous-conferences .conf-link {
-    color: #0066cc;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.previous-conferences .conf-link:hover {
-    color: #004999;
-    transform: translateX(5px);
-}
-
-.previous-conferences .card-title {
-    color: #333;
-    font-weight: 600;
-}
-
-.previous-conferences .btn-link {
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0;
-    color: #008251;
-}
-
-.previous-conferences .btn-link:hover {
-    text-decoration: none;
-    opacity: 0.8;
-}
-
-/* Sidebar Styles */
+/* Sidebar Styles
+   ----------------------------------------- */
 .sidebar-box {
     background: #fff;
     padding: 20px;
@@ -133,31 +89,12 @@ section {
     color: #008251;
 }
 
-.conference-list li {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-.conference-list li:last-child {
-    border-bottom: none;
-}
-
-.conf-link {
-    color: #0066cc;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.conf-link:hover {
-    color: #004999;
-    text-decoration: none;
-}
-
-
-/* Time Display Styles */
+/* Time Display Styles
+   ----------------------------------------- */
 .time-display {
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
 }
 
 .time-display h4 {
@@ -188,100 +125,111 @@ section {
 #date {
     color: #666;
     margin-bottom: 0.5rem;
-}   
-
-/* Welcome Section */
-.welcome-title {
-    color: #008251;
-    margin-bottom: 1.5rem;
 }
 
-
-
-/* Scope Section */
-.scope-item {
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
+/* Conference List Styles
+   ----------------------------------------- */
+.conference-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-.scope-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.conference-list li:last-child {
+    border-bottom: none;
 }
 
-/* Call for Papers Section */
-.paper-topics {
+.conf-link {
+    color: #0066cc;
+    text-decoration: none;
     transition: all 0.3s ease;
 }
 
-.paper-topics.collapse:not(.show) {
-    display: block;
-    height: 200px;
-    overflow: hidden;
-    position: relative;
+.conf-link:hover {
+    color: #004999;
+    transform: translateX(5px);
+    display: inline-block;
 }
 
-.paper-topics.collapse:not(.show)::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: linear-gradient(transparent, white);
-}
-
-.topic-list {
-    list-style: none;
-    padding-left: 0;
+/* Call for Papers Styles
+   ----------------------------------------- */
+   .topic-list {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
 }
 
 .topic-list li {
-    margin-bottom: 1rem;
-    padding: 0.5rem 0;
-    transition: transform 0.3s ease;
+    background-color: #f8f9fa;
+    padding: 4px 8px;
+    margin-bottom: 1px;
 }
 
-.topic-list li:hover {
-    transform: translateX(10px);
+
+
+/* Important Dates Styles
+   ----------------------------------------- */
+.dates-box {
+    margin: 1.5rem 0;
+}
+.dates-list {
+    list-style: none;  /* Menghilangkan bullet points untuk important dates */
+    padding: 0;
+    margin: 0;
 }
 
-/* Section Titles */
-.section-title {
-    color: #333;
+.date-item {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border-left: 4px solid #008251;
+}
+
+.date-label {
     font-weight: 600;
-    margin-bottom: 2rem;
-    position: relative;
+    color: #333;
+    margin-bottom: 4px;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background-color: #008251;
+.date-value {
+    color: #666;
 }
 
-/* Buttons and Links */
-.btn-link {
+.new-date {
     color: #008251;
-    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Guidelines & Publications Styles
+   ----------------------------------------- */
+.guideline-item,
+.publication-item {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border-left: 4px solid #008251;
     transition: all 0.3s ease;
 }
 
-.btn-link:hover {
-    color: #006c42;
-    text-decoration: none;
+.guideline-item:hover,
+.publication-item:hover {
+    transform: translateX(5px);
+    background: #f0f0f0;
 }
 
+.guideline-item i,
+.publication-item i {
+    color: #008251;
+    margin-right: 12px;
+}
+
+/* Button Styles
+   ----------------------------------------- */
 .btn-success {
     background-color: #008251;
     border-color: #008251;
+    transition: all 0.3s ease;
 }
 
 .btn-success:hover {
@@ -289,7 +237,19 @@ section {
     border-color: #006c42;
 }
 
-/* Footer */
+.btn-link {
+    color: #008251;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+    color: #006c42;
+    text-decoration: none;
+}
+
+/* Footer Styles
+   ----------------------------------------- */
 footer {
     background-color: #343a40;
 }
@@ -306,17 +266,8 @@ footer hr {
     border-color: rgba(255,255,255,0.1);
 }
 
-/* Icons */
-.fas, .fab {
-    transition: transform 0.3s ease;
-}
-
-a:hover .fas,
-a:hover .fab {
-    transform: translateY(-2px);
-}
-
-/* Animations */
+/* Animation Styles
+   ----------------------------------------- */
 .fade-in {
     animation: fadeIn 0.5s ease-out;
 }
@@ -324,7 +275,7 @@ a:hover .fab {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
@@ -332,7 +283,8 @@ a:hover .fab {
     }
 }
 
-/* Read More Button Animation */
+/* Read More Button Animation
+   ----------------------------------------- */
 [data-bs-toggle="collapse"] i {
     transition: transform 0.3s ease;
 }
@@ -341,18 +293,20 @@ a:hover .fab {
     transform: rotate(180deg);
 }
 
-/* Responsive Design */
+/* Responsive Design
+   ----------------------------------------- */
 @media (max-width: 992px) {
     .hero-section {
         text-align: center;
-    }
-
-    .previous-conferences {
-        margin-top: 0;
+        min-height: 50vh;
     }
     
     .hero-section h1 {
         font-size: 2.5rem;
+    }
+    
+    .sidebar-box {
+        margin-top: 2rem;
     }
 }
 
@@ -366,8 +320,12 @@ a:hover .fab {
         padding: 0.5rem 1rem !important;
     }
 
-    .previous-conferences .col-md-4 {
-        margin-bottom: 1rem;
+    .topic-item,
+    .date-item,
+    .guideline-item,
+    .publication-item {
+        margin-bottom: 10px;
+        padding: 12px;
     }
 
     .hero-section .btn {
@@ -381,15 +339,9 @@ a:hover .fab {
     }
 }
 
-/* Print Styles */
+/* Print Styles
+   ----------------------------------------- */
 @media print {
-    .navbar,
-    .hero-section .btn,
-    .paper-topics .btn-link,
-    footer {
-        display: none;
-    }
-
     body {
         padding-top: 0;
     }
@@ -406,5 +358,20 @@ a:hover .fab {
     .hero-section .text-white {
         color: #000 !important;
         text-shadow: none;
+    }
+
+    .navbar,
+    .hero-section .btn,
+    .btn-link,
+    footer {
+        display: none;
+    }
+
+    .topic-item,
+    .date-item,
+    .guideline-item,
+    .publication-item {
+        break-inside: avoid;
+        border-left: 1px solid #333;
     }
 }
