@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Committee - HIS 2025</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Hero Banner -->
+    <header class="hero-banner">
+        <img src="/api/placeholder/1200/300" alt="Conference Background" class="hero-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="display-4 text-white text-center">Program Committee</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div class="row">
+        <div class="table-responsive col-lg-8">
+            <table class="table table-custom">
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                        <th>Affiliation</th>
+                    </tr>
+                </thead>
+                <tbody id="committeeTableBody">
+                    <!-- Table content will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Sidebar -->
+        <div class="col-lg-4" id="sidebar"></div>
+    </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/clock.js"></script>
+    <script>
+        // Function to populate table
+        function populateCommitteeTable() {
+            const tableBody = document.getElementById('committeeTableBody');
+            
+            conferenceData.committeeMembers.forEach(member => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${member.firstName}</td>
+                    <td>${member.lastName}</td>
+                    <td><a href="mailto:${member.email}" class="email-link">${member.email}</a></td>
+                    <td>${member.affiliation}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initialize when document is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            populateCommitteeTable();
+        });
+    </script>
+</body>
+</html>

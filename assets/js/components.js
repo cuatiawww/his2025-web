@@ -10,21 +10,45 @@ const components = {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto ">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link active" href="index.html">HOME</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pages/call.html">CALL</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="pages/call.html" id="callDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CALL
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="callDropdown">
+                                <li><a class="dropdown-item" href="pages/call.html">Call for Papers</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pages/organization.html">ORGANIZATION</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="pages/" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                ORGANIZATION
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="orgDropdown">
+                                <li><a class="dropdown-item" href="pages/organizing-committee.html">Organizing Committee</a></li>
+                                <li><a class="dropdown-item" href="pages/program-committee.html">Program Committee</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pages/agenda.html">AGENDA</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="pages/agenda.html" id="agendaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                AGENDA
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="agendaDropdown">
+                                <li><a class="dropdown-item" href="pages/conference-program.html">Conference Schedule</a></li>
+                                <li><a class="dropdown-item" href="pages/keynotes.html">Keynote Speakers</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pages/participant.html">PARTICIPANT INFORMATION</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="pages/participant.html" id="participantDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                PARTICIPANT INFORMATION
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="participantDropdown">
+                                <li><a class="dropdown-item" href="pages/participant.html#registration">Registration</a></li>
+                                <li><a class="dropdown-item" href="pages/participant.html#venue">Venue & Accommodation</a></li>
+                                <li><a class="dropdown-item" href="pages/participant.html#travel">Travel Information</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

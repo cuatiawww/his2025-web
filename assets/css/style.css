@@ -14,6 +14,35 @@ section {
     padding: 3rem 0;
 }
 
+/* Dropdown Styles */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #008251;
+    transform: translateX(5px);
+}
+
+.nav-link.dropdown-toggle::after {
+    transition: transform 0.2s ease;
+}
+
+.nav-link.dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+
 /* Navigation Styles
    ----------------------------------------- */
 .navbar {
@@ -224,6 +253,42 @@ section {
     margin-right: 12px;
 }
 
+/* Organizing Committee Styles
+   ----------------------------------------- */
+.committee-section {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.committee-title {
+    color: #008251;
+    border-bottom: 2px solid #008251;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.committee-member {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #008251;
+}
+
+.member-name {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.member-affiliation {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+
 /* Button Styles
    ----------------------------------------- */
 .btn-success {
@@ -292,13 +357,13 @@ footer hr {
 [data-bs-toggle="collapse"][aria-expanded="true"] i {
     transform: rotate(180deg);
 }
-
 /* Responsive Design
    ----------------------------------------- */
-@media (max-width: 992px) {
+   @media (max-width: 992px) {
     .hero-section {
         text-align: center;
         min-height: 50vh;
+        padding-top: 80px; /* Added to account for fixed navbar */
     }
     
     .hero-section h1 {
@@ -308,16 +373,62 @@ footer hr {
     .sidebar-box {
         margin-top: 2rem;
     }
+
+    /* Added dropdown specific styles */
+    .navbar-nav .dropdown-menu {
+        position: static !important;
+        width: 100%;
+        background-color: #f8f9fa;
+        border: none;
+        box-shadow: none;
+    }
+
+    .dropdown-item {
+        text-align: center;
+        padding: 0.75rem 1rem;
+    }
+
+    .dropdown-toggle::after {
+        float: right;
+        margin-top: 10px;
+    }
 }
 
 @media (max-width: 768px) {
     .navbar-nav {
         text-align: center;
         padding: 1rem 0;
+        background-color: white;
     }
 
     .nav-link {
         padding: 0.5rem 1rem !important;
+    }
+
+    /* Dropdown mobile enhancements */
+    .dropdown-menu {
+        padding: 0;
+        margin: 0;
+    }
+
+    .dropdown-item {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .dropdown-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Added navbar toggle button styling */
+    .navbar-toggler {
+        border: none;
+        padding: 0.5rem;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+        outline: none;
     }
 
     .topic-item,
@@ -336,6 +447,19 @@ footer hr {
     .hero-section .d-flex {
         flex-direction: column;
         gap: 1rem;
+    }
+
+    /* Added mobile menu animation */
+    .navbar-collapse {
+        transition: all 0.3s ease;
+    }
+
+    .navbar-collapse.collapsing {
+        height: auto;
+    }
+
+    .navbar-collapse.show {
+        box-shadow: 0 6px 10px rgba(0,0,0,0.1);
     }
 }
 
@@ -373,5 +497,43 @@ footer hr {
     .publication-item {
         break-inside: avoid;
         border-left: 1px solid #333;
+    }
+
+    /* Added print styles for dropdowns */
+    .dropdown-menu {
+        display: none !important;
+    }
+}
+
+/* Added smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Added transition for dropdown menus */
+.dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+}
+
+.dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+@media (max-width: 992px) {
+    .dropdown-menu {
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .dropdown-menu.show {
+        display: block;
     }
 }

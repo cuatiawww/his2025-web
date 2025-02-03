@@ -1,4 +1,3 @@
-// data.js
 const conferenceData = {
     previousConferences: [
         { year: "2024", location: "Hong Kong" },
@@ -92,6 +91,80 @@ const conferenceData = {
         {
             label: "Camera-Ready Submission",
             date: "5 October 2025"
+        }
+    ],
+    committeeMembers: [
+        {
+            firstName: "Allel",
+            lastName: "Hadjali",
+            email: "allel.hadjali@ensma.fr",
+            affiliation: "LIAS/ENSMA, France"
+        },
+        {
+            firstName: "Mohammed",
+            lastName: "Diykh",
+            email: "Mohammed.diykh@utq.edu.iq",
+            affiliation: "University of Thi-Qar, Iraq"
+        },
+        {
+            firstName: "Hesam",
+            lastName: "Akbari",
+            email: "hesam.akbari@unl.edu",
+            affiliation: "Islamic Azad University, South Tehran Branch, Iran"
+        },
+        {
+            firstName: "K.",
+            lastName: "Venkatachalam",
+            email: "venkatme83@gmail.com",
+            affiliation: "University of Hradec Králové, Hradec Králové, Czech Republic"
+        },
+        {
+            firstName: "Wieland",
+            lastName: "Schwinger",
+            email: "wieland.schwinger@jku.at",
+            affiliation: "Johannes Kepler University Linz, Department of Telecooperation, Austria"
+        },
+        {
+            firstName: "Umme Marzia",
+            lastName: "Haque",
+            email: "ummemarzia.haque@unisq.edu.au",
+            affiliation: "University of Southern Queensland"
+        },
+        {
+            firstName: "Zakir",
+            lastName: "Hossain",
+            email: "zakir.hossain@du.ac.bd",
+            affiliation: "University of Dhaka, Bangladesh"
+        },
+        {
+            firstName: "Maria",
+            lastName: "De Cola",
+            email: "mariacristina.decola@irccsme.it",
+            affiliation: "IRCCS Centro Neurolesi Bonino-Pulejo"
+        },
+        {
+            firstName: "Md Mljanur",
+            lastName: "Rahman",
+            email: "m.m.rahman@sydney.edu.au",
+            affiliation: "The University of Sydney"
+        },
+        {
+            firstName: "Mohamed Reda",
+            lastName: "Bouadjenek",
+            email: "rbouadjenek@gmail.com",
+            affiliation: "Deakin University"
+        },
+        {
+            firstName: "Ömer Faruk",
+            lastName: "Alçin",
+            email: "ofalcin@gmail.com",
+            affiliation: "Inonu University, Malatya, Turkey"
+        },
+        {
+            firstName: "Xin",
+            lastName: "Cao",
+            email: "xin.cao@unsw.edu.au",
+            affiliation: "The University of New South Wales"
         }
     ]
 };

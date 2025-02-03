@@ -1,4 +1,3 @@
-// main.js
 function getCurrentPage() {
     const path = window.location.pathname;
     if (path.includes('/call.html')) return 'call';
