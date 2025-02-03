@@ -1,3 +1,4 @@
+// Page identification and initialization
 function getCurrentPage() {
     const path = window.location.pathname;
     if (path.includes('/call.html')) return 'call';
@@ -5,114 +6,162 @@ function getCurrentPage() {
     return '';
 }
 
-// Render topics list
+// Topics rendering with modern styling
 function renderTopics() {
     const topicsList = document.getElementById('topicsList');
     if (!topicsList || !conferenceData?.callForPapers) return;
 
     const topics = conferenceData.callForPapers.map(topic => `
-        <li>
-            <div class="p-2 bg-light">
-                <i class="fas fa-check text-success me-2"></i>${topic}
+        <li class="topic-item">
+            <div class="topic-content">
+                <i class="fas fa-check-circle"></i>
+                <span>${topic}</span>
             </div>
         </li>
     `).join('');
 
     topicsList.innerHTML = topics;
+
+    // Add animation effects
+    topicsList.querySelectorAll('.topic-item').forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.1}s`;
+        item.classList.add('fade-in');
+    });
 }
 
-// Render submission dates
+// Dates rendering with modern styling
 function renderDates() {
     const datesList = document.getElementById('datesList');
     if (!datesList || !conferenceData?.importantDates) return;
 
     const dates = conferenceData.importantDates.map(date => `
-        <li class="mb-3">
-            <div class="date-item p-3 bg-light rounded">
-                <div class="date-label fw-bold">${date.label}</div>
-                <div class="date-value">
-                    ${date.oldDate ? `<s>${date.oldDate}</s> ` : ''}
-                    <span class="text-success">${date.newDate || date.date}</span>
+        <li class="date-item-wrapper fade-in">
+            <div class="date-item">
+                <div class="date-content">
+                    <div class="date-label">
+                        <i class="far fa-calendar-alt"></i>
+                        ${date.label}
+                    </div>
+                    <div class="date-value">
+                        ${date.oldDate ? `<span class="old-date">${date.oldDate}</span>` : ''}
+                        <span class="new-date">${date.newDate || date.date}</span>
+                    </div>
                 </div>
             </div>
         </li>
     `).join('');
 
     datesList.innerHTML = dates;
+
+    // Add animation effects
+    datesList.querySelectorAll('.date-item-wrapper').forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.1}s`;
+    });
 }
 
+// Guidelines rendering with modern styling
 function renderGuidelines() {
     const guidelinesBox = document.getElementById('guidelinesBox');
     if (!guidelinesBox || !conferenceData?.submissionGuidelines) return;
 
-    const mainText = conferenceData.submissionGuidelines.mainText;
-    const submission = conferenceData.submissionGuidelines.submissionLink;
+    const { mainText, submissionLink, guidelines } = conferenceData.submissionGuidelines;
 
     const guidelinesHtml = `
-        <div class="submission-text mb-4">
-            <p>
-                ${mainText.text}
-                <a class="fw-bold" href="${mainText.springerLink.url}" target="_blank" class="text-success">
-                    ${mainText.springerLink.text}
-                </a>
-                ${mainText.endText}
-            </p>
-            <p class="fw-bold">
-                ${submission.text}
-                <a href="${submission.link.url}" target="_blank" class="text-success">
-                    ${submission.link.text}
-                </a>.
-            </p>
+        <div class="guidelines-container">
+            <div class="main-text-section fade-in">
+                <p>
+                    ${mainText.text}
+                    <a href="${mainText.springerLink.url}" 
+                       target="_blank" 
+                       class="springer-link">
+                        ${mainText.springerLink.text}
+                    </a>
+                    ${mainText.endText}
+                </p>
+            </div>
+            
+            <div class="submission-section fade-in">
+                <p>
+                    ${submissionLink.text}
+                    <a href="${submissionLink.link.url}" 
+                       target="_blank" 
+                       class="easychair-link">
+                        ${submissionLink.link.text}
+                    </a>
+                </p>
+            </div>
+
+            <div class="guidelines-list">
+                ${guidelines.map((guideline, index) => `
+                    <div class="guideline-item fade-in" style="animation-delay: ${index * 0.1}s">
+                        <i class="fas fa-check-circle"></i>
+                        <span>${guideline}</span>
+                    </div>
+                `).join('')}
+            </div>
         </div>
-       
     `;
 
     guidelinesBox.innerHTML = guidelinesHtml;
 }
 
-// Render publications info
+// Publications rendering with modern styling
 function renderPublications() {
     const publicationsBox = document.getElementById('publicationsBox');
     if (!publicationsBox || !conferenceData?.publications) return;
 
-    const publications = conferenceData.publications.map(publication => `
-        <div class="publication-item mb-3 p-3 bg-light rounded">
-            <i class="fas fa-book text-success me-2"></i>${publication}
+    const publications = conferenceData.publications.map((publication, index) => `
+        <div class="publication-item fade-in" style="animation-delay: ${index * 0.1}s">
+            <div class="publication-content">
+                <i class="fas fa-book"></i>
+                <span>${publication}</span>
+            </div>
         </div>
     `).join('');
 
     publicationsBox.innerHTML = publications;
 }
 
-// Initialize page content
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize all components
+function initializePageComponents() {
     const currentPage = getCurrentPage();
 
-    // Initialize common elements
+    // Common components initialization
     renderTopics();
 
-    // Initialize page-specific elements
+    // Page-specific components
     if (currentPage === 'call') {
         renderDates();
         renderGuidelines();
         renderPublications();
     }
 
-    // Initialize Bootstrap tooltips if available
+    // Initialize tooltips
     if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
         document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
             new bootstrap.Tooltip(el);
         });
     }
+}
+
+// Event listeners and initialization
+document.addEventListener('DOMContentLoaded', function() {
+    initializePageComponents();
+
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });
-
-
-
-
-{/* <div class="guidelines-list">
-${conferenceData.submissionGuidelines.guidelines.map(guideline => `
-    <div class="guideline-item mb-3 p-3 bg-light rounded">
-        <i class="fas fa-check-circle text-success me-2"></i>${guideline}
-    </div>
-`).join('')}
-</div> */}

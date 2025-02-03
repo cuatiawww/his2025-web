@@ -1,50 +1,50 @@
 const components = {
     header: `
-        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <span>HIS</span>
+                <a class="navbar-brand animate-brand" href="index.html">
+                    <span class="brand-text">HIS</span>
                     <span class="year-text">2025</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">HOME</a>
+                            <a class="nav-link active animate-link" href="index.html">HOME</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="pages/call.html" id="callDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle animate-link" href="pages/call.html" id="callDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 CALL
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="callDropdown">
+                            <ul class="dropdown-menu animate slideIn" aria-labelledby="callDropdown">
                                 <li><a class="dropdown-item" href="pages/call.html">Call for Papers</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="pages/" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle animate-link" href="pages/" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 ORGANIZATION
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="orgDropdown">
+                            <ul class="dropdown-menu animate slideIn" aria-labelledby="orgDropdown">
                                 <li><a class="dropdown-item" href="pages/organizing-committee.html">Organizing Committee</a></li>
                                 <li><a class="dropdown-item" href="pages/program-committee.html">Program Committee</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="pages/agenda.html" id="agendaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle animate-link" href="pages/agenda.html" id="agendaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 AGENDA
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="agendaDropdown">
+                            <ul class="dropdown-menu animate slideIn" aria-labelledby="agendaDropdown">
                                 <li><a class="dropdown-item" href="pages/conference-program.html">Conference Schedule</a></li>
                                 <li><a class="dropdown-item" href="pages/keynotes.html">Keynote Speakers</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="pages/participant.html" id="participantDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle animate-link" href="pages/participant.html" id="participantDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 PARTICIPANT INFORMATION
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="participantDropdown">
+                            <ul class="dropdown-menu animate slideIn" aria-labelledby="participantDropdown">
                                 <li><a class="dropdown-item" href="pages/participant.html#registration">Registration</a></li>
                                 <li><a class="dropdown-item" href="pages/conference-venue.html">Venue & Accommodation</a></li>
                                 <li><a class="dropdown-item" href="pages/travel-information.html">Travel Information</a></li>
@@ -59,24 +59,41 @@ const components = {
 
     sidebar: `
         <div class="sidebar-box">
-            <div class="time-display mb-4">
-                <h2 class="text-success mb-2">Time in Bandung, Indonesia</h2>
-                <div class="text-muted">
-                    <div id="date"></div>
-                    <div class="digital-clock">
-                        <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
-                        <span id="session"></span>
-                    </div>
-                </div>
+    <div class="time-display mb-4">
+        <h2 class="time-heading">
+            <i class="far fa-clock me-2"></i>Time in Bandung, Indonesia
+        </h2>
+        <div class="date-display" id="date"></div>
+        <div class="digital-clock">
+            <div class="time-segment">
+                <span id="hours">00</span>
+                <span class="time-label">Hours</span>
             </div>
-
-            <div class="previous-conferences-box">
-                <h2 class="text-success">Previous Conferences</h2>
-                <ul class="conference-list list-unstyled" id="conferenceList">
-                    <!-- Will be populated by JavaScript -->
-                </ul>
+            <span class="time-separator">:</span>
+            <div class="time-segment">
+                <span id="minutes">00</span>
+                <span class="time-label">Minutes</span>
+            </div>
+            <span class="time-separator">:</span>
+            <div class="time-segment">
+                <span id="seconds">00</span>
+                <span class="time-label">Seconds</span>
+            </div>
+            <div class="time-period">
+                <span id="session">AM</span>
             </div>
         </div>
+    </div>
+
+            <div class="previous-conferences-box">
+    <h2 class="conf-heading">
+        <i class="fas fa-history me-2"></i>Previous Conferences
+    </h2>
+    <div class="conferences-container text-center">
+        <ul class="conference-list list-unstyled" id="conferenceList">
+        </ul>
+    </div>
+</div>
     `,
 
     footer: `
