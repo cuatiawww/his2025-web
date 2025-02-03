@@ -7,26 +7,38 @@ function getCurrentPage() {
 }
 
 // Topics rendering with modern styling
-function renderTopics() {
+// Topics rendering with modern styling
+async function renderTopics() {
     const topicsList = document.getElementById('topicsList');
-    if (!topicsList || !conferenceData?.callForPapers) return;
+    if (!topicsList) return;
 
-    const topics = conferenceData.callForPapers.map(topic => `
-        <li class="topic-item">
-            <div class="topic-content">
-                <i class="fas fa-check-circle"></i>
-                <span>${topic}</span>
-            </div>
-        </li>
-    `).join('');
+    try {
+        const topics = await dbOperations.getCallForPapers();
+        
+        if (!topics || topics.length === 0) {
+            topicsList.innerHTML = '<li>No topics available</li>';
+            return;
+        }
 
-    topicsList.innerHTML = topics;
+        topicsList.innerHTML = topics
+            .map(topic => `
+                <li class="topic-item">
+                    <div class="topic-content">
+                        <i class="fas fa-check-circle"></i>
+                        <span>${topic.topic}</span>
+                    </div>
+                </li>
+            `).join('');
 
-    // Add animation effects
-    topicsList.querySelectorAll('.topic-item').forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
-        item.classList.add('fade-in');
-    });
+        // // Add animation effects
+        // topicsList.querySelectorAll('.topic-item').forEach((item, index) => {
+        //     item.style.animationDelay = `${index * 0.1}s`;
+        //     item.classList.add('fade-in');
+        // });
+    } catch (err) {
+        console.error('Error:', err);
+        topicsList.innerHTML = '<li>Failed to load topics</li>';
+    }
 }
 
 // Dates rendering with modern styling

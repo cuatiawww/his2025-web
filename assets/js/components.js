@@ -174,17 +174,36 @@ function updateActiveNavLink() {
     }
 }
 
-// Render conference list
-function renderConferences() {
+async function renderConferences() {
+    // Cari elemen dengan id 'conferenceList'
     const conferenceList = document.getElementById('conferenceList');
-    if (!conferenceList || !conferenceData?.previousConferences) return;
+    if (!conferenceList) return;
 
-    conferenceList.innerHTML = conferenceData.previousConferences
-        .map(conf => `
-            <li>
-                <a href="#" class="conf-link">HIS ${conf.year}</a> - ${conf.location}
-            </li>
-        `).join('');
+    try {
+        // Ambil data dari Supabase menggunakan fungsi getPreviousConferences
+        const conferences = await window.dbOperations.getPreviousConferences();
+        
+        // Jika tidak ada data, tampilkan pesan
+        if (!conferences || conferences.length === 0) {
+            conferenceList.innerHTML = '<li>No conference data available</li>';
+            return;
+        }
+
+        // Render data ke dalam list
+        conferenceList.innerHTML = conferences
+            .map(conf => `
+                <li>
+                    <a href="${conf.url || '#'}" class="conf-link">
+                        HIS ${conf.year}
+                    </a> - ${conf.location}
+                </li>
+            `).join('');
+
+    } catch (err) {
+        // Tangani error jika ada
+        console.error('Error:', err);
+        conferenceList.innerHTML = '<li>Failed to load conference data</li>';
+    }
 }
 
 // Initialize semua komponen ketika DOM ready

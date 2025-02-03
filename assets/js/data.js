@@ -1,3 +1,26 @@
+// // data.js
+// const testData = [
+//     { year: 2024, location: 'Shanghai, China' },
+//     { year: 2023, location: 'Tokyo, Japan' },
+//     { year: 2022, location: 'Seoul, Korea' }
+// ];
+
+// // Insert test data hanya jika belum ada data
+// document.addEventListener('DOMContentLoaded', async () => {
+//     try {
+//         // Cek apakah sudah ada data
+//         const existingData = await dbOperations.getPreviousConferences();
+        
+//         // Hanya insert jika tidak ada data
+//         if (!existingData || existingData.length === 0) {
+//             const result = await dbOperations.insertPreviousConferences(testData);
+//             console.log('Test data insertion result:', result);
+//         }
+//     } catch (error) {
+//         console.error('Error checking/inserting test data:', error);
+//     }
+// });
+
 const conferenceData = {
     previousConferences: [
         { year: "2024", location: "Hong Kong" },
