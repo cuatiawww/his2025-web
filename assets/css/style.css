@@ -407,19 +407,6 @@ section {
     display: inline-block;
 }
 
-/* Call for Papers Styles
-   ----------------------------------------- */
-.topic-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.topic-list li {
-    background-color: var(--bg-light);
-    padding: 4px 8px;
-    margin-bottom: 1px;
-}
 
 /* Important Dates Styles
    ----------------------------------------- */
@@ -456,28 +443,198 @@ section {
     font-weight: 500;
 }
 
-/* Guidelines & Publications Styles
-   ----------------------------------------- */
-.guideline-item,
+/* Call for Papers Styles */
+.call-papers-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.call-papers-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #198754;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.call-papers-content .lead {
+    color: #4a5568;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Topics List Styling */
+.topics-box {
+    background: #f8f9fa;
+    padding: 1.05rem;
+    border-radius: 12px;
+}
+
+.topic-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+}
+
+.topic-item {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.topic-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.topic-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topic-content i {
+    color: #198754;
+    font-size: 1.1rem;
+}
+
+.topic-content span {
+    color: #2d3748;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+/* Important Dates Styling */
+.dates-box {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.dates-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.date-item {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.date-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.date-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #2d3748;
+    font-weight: 500;
+}
+
+.date-label i {
+    color: #198754;
+}
+
+.date-value {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.old-date {
+    text-decoration: line-through;
+    color: #a0aec0;
+}
+
+.new-date {
+    color: #198754;
+    font-weight: 600;
+}
+
+/* Guidelines Box Styling */
+.guidelines-container {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.guideline-item {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.guideline-item i {
+    color: #198754;
+    margin-top: 0.25rem;
+}
+
+/* Publications Box Styling */
+.publications-box {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
 .publication-item {
-    background: var(--bg-light);
-    padding: 15px;
-    margin-bottom: 12px;
-    border-radius: 6px;
-    border-left: 4px solid var(--primary-color);
-    transition: var(--transition);
+    background: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.guideline-item:hover,
-.publication-item:hover {
-    transform: translateX(5px);
-    background: #f0f0f0;
+.publication-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-.guideline-item i,
-.publication-item i {
-    color: var(--primary-color);
-    margin-right: 12px;
+.publication-content i {
+    color: #198754;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .call-papers-content {
+        padding: 1.5rem;
+    }
+
+    .topics-box,
+    .dates-box,
+    .guidelines-container,
+    .publications-box {
+        padding: 1.5rem;
+    }
+
+    .date-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 /* PDF Viewer Styles
@@ -932,6 +1089,21 @@ footer hr {
 
     footer .social-links {
         margin-top: 1rem;
+    }
+    .call-papers-content {
+        padding: 1.5rem;
+    }
+
+    .topics-box,
+    .dates-box,
+    .guidelines-container,
+    .publications-box {
+        padding: 1.5rem;
+    }
+
+    .date-content {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
