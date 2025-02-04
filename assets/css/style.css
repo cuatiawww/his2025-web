@@ -169,6 +169,90 @@ section {
     background: rgba(0,0,0,0.5);
 }
 
+/* Hero Section Enhancement */
+.hero-section {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../images/Bandung.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+ }
+ 
+ .hero-content {
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+ }
+ 
+ .hero-section h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+ }
+ 
+ .hero-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+ }
+ 
+ .hero-info {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: inline-flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+ }
+
+
+ /* Welcome Section Styling */
+.welcome-section {
+    background: #f8f9fa;
+    padding: 5rem 0;
+ }
+ 
+ .welcome-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+ }
+ 
+ .welcome-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background: #198754;
+ }
+ 
+ .scope-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    margin-bottom:2.5rem;
+ }
+ 
+ .scope-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #198754;
+    transition: transform 0.3s ease;
+ }
+ 
+ .scope-item:hover {
+    transform: translateX(10px);
+ }
+ 
 /* Sidebar Styles
    ----------------------------------------- */
 .sidebar-box {
@@ -235,36 +319,6 @@ section {
     margin-bottom: 0;
 }
 
-/* .conference-list li:hover {
-    transform: translateX(1px);
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.1),
-                -5px -5px 10px rgba(255,255,255,0.8);
-} */
-
-/* .conf-link {
-    color: #0066cc;
-    font-weight: 500;
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-} */
-/* 
-.conf-link:hover {
-    color: #008251;
-} */
-
-/* .conf-year {
-    color: #008251;
-    font-weight: 600;
-    margin-right: 0.5rem;
-} */
-
-/* .conf-location { 
-    color: #666;
-    font-size: 0.9rem;
-} */
 
 /* Add smooth scrollbar for many items */
 .conferences-container {
@@ -689,52 +743,6 @@ section {
     margin-left: auto;
 }
 
-/* Keynotes Speaker Styles
-   ----------------------------------------- */
-/* .keynote-speaker {
-    margin-bottom: 3rem;
-    padding: 2rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: var(--shadow-sm);
-}
-
-.speaker-photo {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
-
-.speaker-name {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.speaker-affiliation {
-    color: var(--text-muted);
-    font-style: italic;
-    margin-bottom: 1rem;
-}
-
-.talk-title {
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.abstract-section, 
-.bio-section {
-    margin-top: 1.5rem;
-}
-
-.section-title {
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-} */
-
 /* Committee Styles
    ----------------------------------------- */
 .committee-section {
@@ -976,6 +984,32 @@ footer hr {
 }
 
 @media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-info {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .welcome-section {
+        padding: 3rem 0;
+    }
+    
+    .welcome-title {
+        font-size: 2rem;
+    }
+    
+    .scope-section {
+        padding: 1.5rem;
+        margin-bottom:2.5rem;
+    }
     .previous-conferences-box {
         padding: 1rem;
     }
@@ -1111,6 +1145,11 @@ footer hr {
 @media (max-width: 576px) {
     .hero-section h1 {
         font-size: 2rem;
+    }
+    
+    .hero-section .btn {
+        width: 100%;
+        margin: 0.5rem 0;
     }
 
     .pdf-container {
