@@ -6,7 +6,6 @@ const SUPABASE_CONFIG = {
 };
 
 const dbOperations = {
-    // Fetch conference data - fungsi ini yang aktif digunakan
     getPreviousConferences: async () => {
         try {
             const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/previous_conferences?select=*&order=year.desc`, {
@@ -91,8 +90,42 @@ const dbOperations = {
             return null;
         }
     },
+    getOrganizationMembers: async () => {
+        try {
+            const response = await fetch(
+                `${SUPABASE_CONFIG.url}/rest/v1/organization_members?select=*,organization_roles(*)&order=organization_roles(display_order).asc`, {
+                headers: {
+                    'apikey': SUPABASE_CONFIG.apiKey,
+                    'Authorization': `Bearer ${SUPABASE_CONFIG.apiKey}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            
+            // Group members by role
+            const groupedMembers = data.reduce((acc, member) => {
+                const roleName = member.organization_roles.role_name;
+                if (!acc[roleName]) {
+                    acc[roleName] = [];
+                }
+                acc[roleName].push({
+                    name: member.name,
+                    affiliation: member.affiliation
+                });
+                return acc;
+            }, {});
+
+            return groupedMembers;
+        } catch (err) {
+            console.error('Error fetching organization members:', err);
+            return null;
+        }
+    },
 
 };
-
-// Make database operations globally available
 window.dbOperations = dbOperations;
