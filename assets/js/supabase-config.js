@@ -127,5 +127,27 @@ const dbOperations = {
         }
     },
 
+    getVenueInfo: async () => {
+        try {
+            const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/venue_info?select=*`, {
+                headers: {
+                    'apikey': SUPABASE_CONFIG.apiKey,
+                    'Authorization': `Bearer ${SUPABASE_CONFIG.apiKey}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            return data[0]; // Return first venue info
+        } catch (err) {
+            console.error('Error fetching venue info:', err);
+            return null;
+        }
+    }
+
 };
 window.dbOperations = dbOperations;

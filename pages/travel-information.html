@@ -7,63 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../assets/css/style.css" rel="stylesheet">
-    <style>
-        .info-section {
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .section-title {
-            color: #008251;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #008251;
-        }
-        
-        .travel-item {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 6px;
-            border-left: 4px solid #008251;
-        }
-        
-        .travel-icon {
-            color: #008251;
-            margin-right: 0.5rem;
-            width: 20px;
-        }
-        
-        .info-link {
-            color: #008251;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .info-link:hover {
-            color: #006c42;
-            text-decoration: underline;
-        }
-
-        .alert-info-custom {
-            background-color: #e8f5f3;
-            border-color: #008251;
-            color: #333;
-            border-radius: 6px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-    </style>
 </head>
 <body>
     <div id="header"></div>
 
     <!-- Hero Banner -->
-    <header class="hero-banner">
+    <header class="hero-banner travel-banner">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="container">
@@ -77,49 +26,77 @@
         <div class="row">
             <div class="col-lg-8">
                 <!-- Going to Bandung -->
-<div class="info-section">
-    <h3 class="section-title">Going to Bandung</h3>
-    
-    <div class="travel-item">
-        <h4><i class="fas fa-plane travel-icon"></i>By Air</h4>
-        <p>Bandung can be reached via Husein Sastranegara International Airport (BDO), which serves domestic flights within Indonesia and some international flights from neighboring countries. For more international connections, travelers can arrive at Jakarta's Soekarno-Hatta International Airport (CGK) and continue to Bandung.</p>
-        <p>From Husein Sastranegara Airport, the city center is easily accessible by taxi or ride-hailing services, with a journey time of approximately 15-20 minutes depending on traffic conditions.</p>
-    </div>
+                <div class="info-section">
+                    <h3 class="section-title">Getting to Bandung</h3>
+                    
+                    <div class="travel-item">
+                        <h4><i class="fas fa-train travel-icon"></i>By High-Speed Rail (WHOOSH)</h4>
+                        <p>The new WHOOSH high-speed rail service connects Jakarta and Bandung in just 15-20 minutes:</p>
+                        <ul class="mb-3">
+                            <li>Jakarta Station: Halim Station (East Jakarta)</li>
+                            <li>Bandung Station: Tegalluar Station (Bojongsoang)</li>
+                            <li>Multiple daily departures</li>
+                        </ul>
+                        <p>From Tegalluar Station to the conference venue, take a taxi or ride-hailing service (approximately 30-40 minutes).</p>
+                    </div>
 
-    <div class="travel-item">
-        <h4><i class="fas fa-train travel-icon"></i>By Train</h4>
-        <p>Regular train services connect Bandung to major Indonesian cities, particularly Jakarta, via the historic Bandung Railway Station. The journey from Jakarta takes approximately 3-3.5 hours on executive class trains, offering a scenic route through West Java's mountainous landscape.</p>
-    </div>
+                    <div class="travel-item">
+                        <h4><i class="fas fa-plane travel-icon"></i>By Air</h4>
+                        <p>Bandung's Husein Sastranegara International Airport (BDO) serves domestic flights and select international routes. International visitors can also arrive at Jakarta's Soekarno-Hatta International Airport (CGK) and continue to Bandung via high-speed rail or other ground transportation.</p>
+                        <p>The conference venue is approximately 20-30 minutes from Husein Sastranegara Airport by taxi or ride-hailing service.</p>
+                    </div>
 
-    <div class="travel-item">
-        <h4><i class="fas fa-bus travel-icon"></i>By Bus</h4>
-        <p>Several bus companies operate regular services to Bandung from various cities in Java. The Leuwipanjang Bus Terminal serves as the main gateway for inter-city buses. Premium bus services from Jakarta's various terminals to Bandung take approximately 3-4 hours depending on traffic conditions.</p>
-    </div>
+                    <div class="travel-item">
+                        <h4><i class="fas fa-train travel-icon"></i>By Regular Train</h4>
+                        <p>Regular train services connect Bandung Railway Station with major Indonesian cities:</p>
+                        <ul>
+                            <li>Jakarta - Bandung: 3 hours (executive class available)</li>
+                            <li>Multiple daily departures from Gambir Station (Jakarta)</li>
+                            <li>From Bandung Station to venue: 15-20 minutes by taxi</li>
+                        </ul>
+                    </div>
 
-    <div class="travel-item">
-        <h4><i class="fas fa-car travel-icon"></i>By Car</h4>
-        <p>Bandung is accessible via the Cipularang toll road from Jakarta, which takes approximately 2-3 hours under normal traffic conditions. The city is also connected to other major cities in West Java through well-maintained highways.</p>
-    </div>
+                    <div class="travel-item">
+                        <h4><i class="fas fa-car travel-icon"></i>Ground Transportation</h4>
+                        <p>Local transportation options in Bandung:</p>
+                        <ul>
+                            <li>Taxis: Blue Bird Group (most reliable)</li>
+                            <li>Ride-hailing: Grab, Gojek</li>
+                            <li>Online taxi booking through apps</li>
+                            <li>Hotel shuttle services (check with your accommodation)</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <p>For more information, please refer to the <a href="#" class="info-link">Indonesia Tourism Board</a>.</p>
-</div>
+                <!-- Visa Information -->
+                <div class="info-section">
+                    <h3 class="section-title">Visa Information</h3>
+                    
+                    <div class="alert alert-info-custom">
+                        <i class="fas fa-info-circle travel-icon"></i>
+                        Indonesia offers various visa options for international visitors:
+                        <ul class="mb-0 mt-2">
+                            <li>Visa-free entry (for eligible countries)</li>
+                            <li>Visa on Arrival (VOA) - 30 days, extendable once</li>
+                            <li>E-visa application before travel</li>
+                        </ul>
+                    </div>
 
-<!-- Visa Information -->
-<div class="info-section">
-    <h3 class="section-title">Visa to Indonesia</h3>
-    
-    <div class="alert alert-info-custom">
-        <i class="fas fa-info-circle travel-icon"></i>
-        Citizens from many countries can enter Indonesia through Visa on Arrival (VOA) or Visa-Free facilities. The standard VOA allows for a 30-day stay and can be extended once for another 30 days.
-    </div>
+                    <div class="travel-item">
+                        <h4><i class="fas fa-passport travel-icon"></i>Visa Requirements</h4>
+                        <p>Check your visa requirements on the <a href="https://www.imigrasi.go.id/" target="_blank" class="info-link">Indonesian Immigration website</a>.</p>
+                        <p>For visa support letters, please contact: <a href="mailto:conference@his2025.org" class="info-link">conference@his2025.org</a></p>
+                    </div>
 
-    <p>Please refer to the <a href="#" class="info-link">Indonesian Immigration website</a> to confirm your visa requirements and eligibility for VOA or Visa-Free entry.</p>
-
-    <div class="travel-item">
-        <h4><i class="fas fa-envelope travel-icon"></i>Visa Application Letter</h4>
-        <p>If you need a letter for visa application, please email to <a href="mailto:conference@mail.com" class="info-link">Conference Secretary</a>.</p>
-    </div>
-</div>
+                    <div class="travel-item">
+                        <h4><i class="fas fa-info-circle travel-icon"></i>Important Notes</h4>
+                        <ul>
+                            <li>Passport must be valid for at least 6 months</li>
+                            <li>Proof of onward/return travel may be required</li>
+                            <li>Visa regulations may change - check official sources</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             
             <!-- Sidebar -->
@@ -129,10 +106,11 @@
 
     <div id="footer"></div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/data.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/supabase-config.js"></script>
     <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/data.js"></script>
     <script src="../assets/js/clock.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organization - HIS 2025</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../assets/css/style.css" rel="stylesheet">
@@ -25,75 +24,108 @@
 
     <div class="container py-5">
         <div class="row">
-            <div class="col-lg-8" id="committeeContent">
-                <!-- Committee content will be loaded here -->
-                <div id="loadingIndicator" class="text-center">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
+            <div class="col-lg-8">
+                <div class="announcement-card fade-in">
+                    <div class="announcement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Organization Committee</h3>
+                    <div class="announcement-content">
+                        <p>The organization committee members for HIS 2025 will be announced soon.</p>
+                        <p class="announcement-details">
+                            Our committee will consist of dedicated professionals from various institutions 
+                            who will work together to ensure the success of HIS 2025. The full list of 
+                            committee members and their roles will be published here.
+                        </p>
                     </div>
                 </div>
             </div>
             <!-- Sidebar -->
-            <div class="col-lg-4" id="sidebar"></div>
+            <div class="col-lg-4" id="sidebar">
+                <!-- Time Display -->
+                <div class="time-display mb-4">
+                    <h4 class="time-heading">
+                        <i class="fas fa-clock"></i>
+                        Time in Bandung, Indonesia
+                    </h4>
+                    <div class="date-display" id="currentDate"></div>
+                    <div class="digital-clock" id="digitalClock">
+                        <div class="time-segment">
+                            <span id="hours">00</span>
+                            <span class="time-label">HOURS</span>
+                        </div>
+                        <span class="time-separator">:</span>
+                        <div class="time-segment">
+                            <span id="minutes">00</span>
+                            <span class="time-label">MINUTES</span>
+                        </div>
+                        <span class="time-separator">:</span>
+                        <div class="time-segment">
+                            <span id="seconds">00</span>
+                            <span class="time-label">SECONDS</span>
+                        </div>
+                        <div class="time-period" id="period">AM</div>
+                    </div>
+                </div>
+                
+                <!-- Previous Conferences Box -->
+                <div class="previous-conferences-box">
+                    <h4 class="conf-heading">
+                        <i class="fas fa-history"></i>
+                        Previous Conferences
+                    </h4>
+                    <div class="conferences-container">
+                        <ul class="conference-list" id="prevConferencesList">
+                            <!-- Will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div id="footer"></div>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/supabase-config.js"></script>
-    <script>
-        async function loadOrganizationMembers() {
-            const contentDiv = document.getElementById('committeeContent');
-            const loadingIndicator = document.getElementById('loadingIndicator');
-            
-            try {
-                const groupedMembers = await dbOperations.getOrganizationMembers();
-                
-                if (!groupedMembers) {
-                    throw new Error('Failed to load committee members');
-                }
 
-                // Generate HTML
-                let html = '';
-                for (const [role, members] of Object.entries(groupedMembers)) {
-                    html += `
-                        <div class="committee-section">
-                            <h2 class="committee-title">${role}</h2>
-                            ${members.map(member => `
-                                <div class="committee-member">
-                                    <div class="member-name">${member.name}</div>
-                                    <div class="member-affiliation">${member.affiliation}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-
-                // Remove loading indicator and show content
-                loadingIndicator.style.display = 'none';
-                contentDiv.innerHTML = html;
-
-            } catch (error) {
-                console.error('Error loading committee members:', error);
-                loadingIndicator.style.display = 'none';
-                contentDiv.innerHTML = `
-                    <div class="alert alert-danger" role="alert">
-                        Error loading committee members. Please try refreshing the page.
-                    </div>
-                `;
-            }
-        }
-
-        // Load data when page is ready
-        document.addEventListener('DOMContentLoaded', loadOrganizationMembers);
-    </script>
-    
     <!-- Other scripts -->
     <script src="../assets/js/data.js"></script>
     <script src="../assets/js/components.js"></script>
     <script src="../assets/js/clock.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page components
+            initializePageComponents();
+            
+            // Start the clock
+            updateClock();
+            setInterval(updateClock, 1000);
+            
+            // Load previous conferences
+            renderPreviousConferences();
+        });
+
+        function renderPreviousConferences() {
+            const conferencesList = document.getElementById('prevConferencesList');
+            if (!conferencesList || !conferenceData?.previousConferences) return;
+
+            const conferencesHtml = conferenceData.previousConferences
+                .map(conf => `
+                    <li>
+                        <a href="${conf.link}" class="conf-link" target="_blank">
+                            ${conf.name}
+                        </a>
+                        <div class="conf-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${conf.location}
+                        </div>
+                    </li>
+                `).join('');
+
+            conferencesList.innerHTML = conferencesHtml || '<li>No previous conferences available</li>';
+        }
+    </script>
 </body>
 </html>

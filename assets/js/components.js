@@ -56,6 +56,55 @@ const components = {
             </div>
         </nav>
     `,
+    registrationModal: `
+        <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0 justify-content-center">
+                        <h5 class="modal-title text-success" id="registrationModalLabel">
+                            <i class="fas fa-info-circle me-2"></i>Registration Information
+                        </h5>
+                    </div>
+                    <div class="modal-body text-center py-4">
+                        <div class="registration-info-icon mb-3">
+                            <i class="fas fa-calendar-alt fa-3x text-success"></i>
+                        </div>
+                        <h4 class="mb-3">Registration Coming Soon</h4>
+                        <p class="mb-4">The registration system for HIS 2025 is currently being prepared and will be available in the coming months. Please check back later for updates on registration procedures and fees.</p>
+                        <p class="small text-muted mb-0">For urgent inquiries, please contact us at <a href="mailto:conference@his2025.org">conference@his2025.org</a></p>
+                    </div>
+                    <div class="modal-footer border-0 justify-content-center">
+                        <button type="button" class="btn btn-success px-4" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `,
+    hotelBookingModal: `
+        <div class="modal fade" id="hotelBookingModal" tabindex="-1" aria-labelledby="hotelBookingModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0 justify-content-center">
+                        <h5 class="modal-title text-success" id="hotelBookingModalLabel">
+                            <i class="fas fa-hotel me-2"></i>Hotel Booking Information
+                        </h5>
+                    </div>
+                    <div class="modal-body text-center py-4">
+                        <div class="registration-info-icon mb-3">
+                            <i class="fas fa-bed fa-3x text-success"></i>
+                        </div>
+                        <h4 class="mb-3">Hotel Booking Coming Soon</h4>
+                        <p class="mb-4">Our hotel booking service for HIS 2025 is currently being prepared. We are partnering with hotels near the conference venue to provide special rates for conference attendees.</p>
+                        <p class="mb-4">Recommended hotels and booking options will be available here in the coming months.</p>
+                        <p class="small text-muted mb-0">For urgent accommodation inquiries, please contact us at <a href="mailto:conference@his2025.org">conference@his2025.org</a></p>
+                    </div>
+                    <div class="modal-footer border-0 justify-content-center">
+                        <button type="button" class="btn btn-success px-4" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `,
 
     sidebar: `
         <div class="sidebar-box">
@@ -206,9 +255,123 @@ async function renderConferences() {
     }
 }
 
-// Initialize semua komponen ketika DOM ready
+
+// Add this to components.js
+
+let registrationModalInstance = null;
+let hotelModalInstance = null;
+
+function initializeModals() {
+    // Initialize Registration Modal
+    if (!document.getElementById('registrationModal')) {
+        const modalDiv = document.createElement('div');
+        modalDiv.innerHTML = components.registrationModal;
+        document.body.appendChild(modalDiv);
+    }
+
+    // Initialize Hotel Booking Modal
+    if (!document.getElementById('hotelBookingModal')) {
+        const modalDiv = document.createElement('div');
+        modalDiv.innerHTML = components.hotelBookingModal;
+        document.body.appendChild(modalDiv);
+    }
+
+    // Handle registration links
+    document.querySelectorAll('a[href*="registration"], a[href="#register"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal('registration');
+        });
+    });
+
+    // Handle hotel booking links
+    document.querySelectorAll('a[href*="hotel-booking"], a[href*="Hotel Booking"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal('hotel');
+        });
+    });
+
+    // Add modal cleanup handlers
+    setupModalCleanup('registrationModal');
+    setupModalCleanup('hotelBookingModal');
+}
+
+function showModal(type) {
+    const modalId = type === 'registration' ? 'registrationModal' : 'hotelBookingModal';
+    const modalElement = document.getElementById(modalId);
+    
+    // Dispose existing instance if any
+    if (type === 'registration' && registrationModalInstance) {
+        registrationModalInstance.dispose();
+        registrationModalInstance = null;
+    }
+    if (type === 'hotel' && hotelModalInstance) {
+        hotelModalInstance.dispose();
+        hotelModalInstance = null;
+    }
+
+    // Create new instance
+    const newModal = new bootstrap.Modal(modalElement, {
+        backdrop: 'static',
+        keyboard: true
+    });
+
+    // Store instance
+    if (type === 'registration') {
+        registrationModalInstance = newModal;
+    } else {
+        hotelModalInstance = newModal;
+    }
+
+    // Show modal
+    newModal.show();
+}
+
+function setupModalCleanup(modalId) {
+    const modalElement = document.getElementById(modalId);
+    if (!modalElement) return;
+
+    modalElement.addEventListener('hidden.bs.modal', function() {
+        // Clean up body classes
+        document.body.classList.remove('modal-open');
+        document.body.style.removeProperty('padding-right');
+        
+        // Remove backdrop
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+
+        // Dispose modal instance
+        if (modalId === 'registrationModal' && registrationModalInstance) {
+            registrationModalInstance.dispose();
+            registrationModalInstance = null;
+        }
+        if (modalId === 'hotelBookingModal' && hotelModalInstance) {
+            hotelModalInstance.dispose();
+            hotelModalInstance = null;
+        }
+    });
+
+    // Handle close button click
+    const closeButton = modalElement.querySelector('.btn-success[data-bs-dismiss="modal"]');
+    if (closeButton) {
+        closeButton.addEventListener('click', function() {
+            const modalInstance = bootstrap.Modal.getInstance(modalElement);
+            if (modalInstance) {
+                modalInstance.hide();
+            }
+        });
+    }
+}
+
+// Update the DOM ready function
 document.addEventListener('DOMContentLoaded', function() {
     ['header', 'footer', 'sidebar'].forEach(id => {
         loadComponent(id);
     });
+    
+    // Initialize all modals
+    initializeModals();
 });

@@ -34,13 +34,13 @@ const conferenceData = {
     importantDates: [
         {
             label: "Abstract Submission Deadline",
-            oldDate: "24 June 2025",
-            newDate: "15 July 2025"
+            // oldDate: "24 June 2025",
+            newDate: "15 June 2025"
         },
         {
             label: "Full Paper Submission Deadline",
-            oldDate: "1 July 2025",
-            newDate: "22 July 2025"
+            // oldDate: "1 July 2025",
+            newDate: "22 June 2025"
         },
         {
             label: "Acceptance Notification",
@@ -48,7 +48,7 @@ const conferenceData = {
         },
         {
             label: "Camera-Ready Submission",
-            date: "5 October 2025"
+            date: "1 October 2025"
         }
     ],
 };
