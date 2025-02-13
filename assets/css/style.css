@@ -116,7 +116,7 @@
     ----------------------------------------- */
     .hero-section, .hero-banner {
         min-height: 100vh;
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/Bandung.jpg');
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/bandung.avif');
         background-size: cover;
         background-position: center;
         display: flex;
@@ -132,16 +132,16 @@
     }
 
     .hero-banner.call-banner {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/call-bg.jpg');
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/bandung.avif');
     }
 
     .hero-banner.travel-banner {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/travel-bg.jpg');
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/bandung.avif');
     }
 
     .hero-banner.program-banner {
         min-height: 300px;
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/program-bg.jpg');
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/bandung.avif');
         background-size: cover;
         background-position: center;
     }
@@ -174,7 +174,7 @@
         min-height: 100vh;
         position: relative;
         overflow: hidden;
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../images/Bandung.jpg');
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../images/bandung.avif');
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
@@ -1119,7 +1119,7 @@ body.modal-open {
 .venue-banner {
     min-height: 50vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                url('../images/venue-bg.jpg');
+                url('../images/bandung.avif');
     background-size: cover;
     background-position: center;
 }
@@ -1189,7 +1189,7 @@ body.modal-open {
 .travel-banner {
     min-height: 50vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                url('../images/travel-bg.jpg');
+    url('../images/bandung.avif');
     background-size: cover;
     background-position: center;
 }
