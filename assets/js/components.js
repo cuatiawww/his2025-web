@@ -71,7 +71,7 @@ const components = {
                         </div>
                         <h4 class="mb-3">Registration Coming Soon</h4>
                         <p class="mb-4">The registration system for HIS 2025 is currently being prepared and will be available in the coming months. Please check back later for updates on registration procedures and fees.</p>
-                        <p class="small text-muted mb-0">For urgent inquiries, please contact us at <a href="mailto:conference@his2025.org">conference@his2025.org</a></p>
+                        <p class="small text-muted mb-0">For urgent inquiries, please contact us at <a href="mailto:his2025@ideas-lab.org">his2025@ideas-lab.org</a></p>
                     </div>
                     <div class="modal-footer border-0 justify-content-center">
                         <button type="button" class="btn btn-success px-4" data-bs-dismiss="modal">Close</button>
@@ -96,7 +96,7 @@ const components = {
                         <h4 class="mb-3">Hotel Booking Coming Soon</h4>
                         <p class="mb-4">Our hotel booking service for HIS 2025 is currently being prepared. We are partnering with hotels near the conference venue to provide special rates for conference attendees.</p>
                         <p class="mb-4">Recommended hotels and booking options will be available here in the coming months.</p>
-                        <p class="small text-muted mb-0">For urgent accommodation inquiries, please contact us at <a href="mailto:conference@his2025.org">conference@his2025.org</a></p>
+                        <p class="small text-muted mb-0">For urgent accommodation inquiries, please contact us at <a href="mailto:his2025@ideas-lab.org">his2025@ideas-lab.org</a></p>
                     </div>
                     <div class="modal-footer border-0 justify-content-center">
                         <button type="button" class="btn btn-success px-4" data-bs-dismiss="modal">Close</button>
@@ -107,32 +107,34 @@ const components = {
     `,
 
     sidebar: `
-        <div class="sidebar-box">
-    <div class="time-display mb-4">
-        <h2 class="time-heading">
-            <i class="far fa-clock me-2"></i>Time in Bandung, Indonesia
-        </h2>
-        <div class="date-display" id="date"></div>
-        <div class="digital-clock">
-            <div class="time-segment">
-                <span id="hours">00</span>
-                <span class="time-label">Hours</span>
-            </div>
-            <span class="time-separator">:</span>
-            <div class="time-segment">
-                <span id="minutes">00</span>
-                <span class="time-label">Minutes</span>
-            </div>
-            <span class="time-separator">:</span>
-            <div class="time-segment">
-                <span id="seconds">00</span>
-                <span class="time-label">Seconds</span>
-            </div>
-            <div class="time-period">
-                <span id="session">AM</span>
+       <div class="sidebar-box">
+        <div class="time-display mb-4">
+            <h2 class="time-heading">
+                <i class="far fa-clock me-2"></i>Countdown to Conference
+            </h2>
+            <div class="date-display" id="date">HIS 2025 Conference Starts In:</div>
+            <div class="digital-clock">
+                <div class="time-segment">
+                    <span id="days">00</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-segment">
+                    <span id="hours">00</span>
+                    <span class="time-label">Hours</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-segment">
+                    <span id="minutes">00</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-segment">
+                    <span id="seconds">00</span>
+                    <span class="time-label">Seconds</span>
+                </div>
             </div>
         </div>
-    </div>
 
             <div class="previous-conferences-box">
     <h2 class="conf-heading">
@@ -146,27 +148,59 @@ const components = {
     `,
 
     footer: `
-        <footer class="bg-dark text-white py-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start">
-                        <h5 class="mb-3">Contact Us</h5>
-                        <p class="mb-1"><i class="fas fa-envelope me-2"></i>conference@his2025.org</p>
-                        <p><i class="fas fa-map-marker-alt me-2"></i>Bandung, Indonesia</p>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <h5 class="mb-3">Follow Us</h5>
-                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-facebook"></i></a>
+        <footer class="footer">
+    <div class="container">
+        <!-- Organizers Section -->
+        <div class="organizers-section mb-5">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h5 class="organizer-title">Organized by</h5>
+                    <div class="organizer-logos">
+                        <div class="logo-container">
+                            <img src="../assets/images/ideaslab.png" alt="IDEAS LAB Logo" class="organizer-logo">
+                        </div>
+                        <div class="logo-container">
+                            <img src="../assets/images/ukm.png" alt="Universitas Maranatha Logo" class="organizer-logo">
+                        </div>
                     </div>
                 </div>
-                <hr class="my-4">
-                <div class="text-center">
-                    <p class="mb-0">&copy; 2025 HIS Conference. All rights reserved.</p>
+                <div class="col-12">
+                    <h5 class="organizer-title">Co-organized by</h5>
+                    <div class="co-organizer-placeholder">
+                        <span>Coming soon</span>
+                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-content">
+            <div class="footer-contact">
+                <h5 class="contact-title">Contact Us</h5>
+                <div class="contact-info">
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <span>his2025@ideas-lab.org</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <span>+62 897 9400 787</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bandung, Indonesia</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 HIS Conference. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
     `
 };
 

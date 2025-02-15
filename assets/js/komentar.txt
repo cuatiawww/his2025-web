@@ -1,5 +1,4 @@
 
-    /* Fungsi-fungsi berikut dikomentari karena belum digunakan
     // Insert conference data
     insertPreviousConferences: async (conferencesData) => {
         try {

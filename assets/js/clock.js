@@ -1,30 +1,28 @@
-function updateClock() {
-    // Create a date object with UTC+7 (Bandung timezone)
-    const bandungTime = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
+function updateCountdown() {
+    // Event date: October 28, 2025
+    const eventDate = new Date('2025-10-28T00:00:00+07:00');
+    const now = new Date();
     
-    // Update date with a more sophisticated format
+    // Calculate time difference
+    const diff = eventDate - now;
+    
+    // Convert to days, hours, minutes, seconds
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Update date display
     const dateElement = document.getElementById('date');
     if (dateElement) {
-        const options = { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        };
-        dateElement.textContent = bandungTime.toLocaleDateString('en-US', options);
+        dateElement.textContent = 'HIS 2025 Conference Starts In:';
     }
     
-    // Update time with animations
-    const hours = bandungTime.getHours();
-    const minutes = bandungTime.getMinutes();
-    const seconds = bandungTime.getSeconds();
-    const session = hours >= 12 ? 'PM' : 'AM';
-
-    // Update clock elements with smooth transitions
-    updateTimeSegment('hours', (hours % 12 || 12).toString().padStart(2, '0'));
+    // Update countdown elements with smooth transitions
+    updateTimeSegment('days', days.toString().padStart(2, '0'));
+    updateTimeSegment('hours', hours.toString().padStart(2, '0'));
     updateTimeSegment('minutes', minutes.toString().padStart(2, '0'));
     updateTimeSegment('seconds', seconds.toString().padStart(2, '0'));
-    updateTimeSegment('session', session);
 }
 
 function updateTimeSegment(id, newValue) {
@@ -41,13 +39,13 @@ function updateTimeSegment(id, newValue) {
     }
 }
 
-// Initialize the clock
+// Initialize the countdown
 document.addEventListener('DOMContentLoaded', function() {
-    updateClock();
-    setInterval(updateClock, 1000);
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
     // Add transition styles dynamically
-    const timeSegments = document.querySelectorAll('#hours, #minutes, #seconds, #session');
+    const timeSegments = document.querySelectorAll('#days, #hours, #minutes, #seconds');
     timeSegments.forEach(segment => {
         segment.style.transition = 'transform 0.2s, opacity 0.2s';
     });
