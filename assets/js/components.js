@@ -147,61 +147,98 @@ const components = {
 </div>
     `,
 
-    footer: `
-        <footer class="footer">
-    <div class="container">
-        <!-- Organizers Section -->
-        <div class="organizers-section mb-5">
-            <div class="row">
-                <div class="col-12 mb-4">
-                    <h5 class="organizer-title">Organized by</h5>
-                    <div class="organizer-logos">
-                        <div class="logo-container">
-                            <img src="../assets/images/ideaslab.png" alt="IDEAS LAB Logo" class="organizer-logo">
-                        </div>
-                        <div class="logo-container">
-                            <img src="../assets/images/ukm.png" alt="Universitas Maranatha Logo" class="organizer-logo">
+    // Updated footer component for components.js
+footer: `
+ <footer class="footer w-100">
+        <div class="container-fluid">
+            <!-- Conference Organization Section -->
+            <div class="row mb-5">
+                <div class="col-12 text-center mb-4">
+                    <h2 class="section-title text-center">Conference Organization</h2>
+                    <div class="section-divider mx-auto mb-4"></div>
+                </div>
+                
+                <!-- Organized by -->
+                <div class="col-md-6 mb-4">
+                    <div class="organization-box">
+                        <h3 class="organization-title">Organized by</h3>
+                        <div class="organizer-logos">
+                            <div class="organizer-logo-container">
+                                <img src="../assets/images/ideaslab.png" alt="IDEAS LAB Logo" class="img-fluid">
+                            </div>
+                            <div class="organizer-logo-container">
+                                <img src="../assets/images/ukm.png" alt="Universitas Maranatha Logo" class="img-fluid">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <h5 class="organizer-title">Co-organized by</h5>
-                    <div class="co-organizer-placeholder">
-                        <span>Coming soon</span>
+                
+                <!-- Co-organized by -->
+                <div class="col-md-6 mb-4">
+                    <div class="organization-box">
+                        <h3 class="organization-title">Co-organized by</h3>
+                        <div class="co-organizer-container">
+                            <span>Coming soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact & Information Section -->
+            <div class="row footer-info-section mx-0">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-heading">About HIS 2025</h3>
+                    <p class="footer-text">14th International Conference on Health Information Science (HIS 2025) provides a forum for disseminating and exchanging multidisciplinary research results in computer science/information technology and health science & services.</p>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:his2025@ideas-lab.org">his2025@ideas-lab.org</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+62897940078">+62 897 9400 787</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Maranatha Christian University<br>Jl. Surya Sumantri No.65, Bandung,<br>West Java, Indonesia</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-heading">Important Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="call.html">Call for Papers</a></li>
+                        <li><a href="organizing-committee.html">Organizing Committee</a></li>
+                        <li><a href="conference-program.html">Conference Schedule</a></li>
+                        <li><a href="conference-venue.html">Venue & Accommodation</a></li>
+                    </ul>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Copyright Bar - Full Width -->
+        <div class="footer-bottom w-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 ps-4">
+                        <p>&copy; 2025 HIS Conference. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end pe-4">
+                        <p>Co-located with <a href="https://icot2025.org" target="_blank">ICOT 2025</a></p>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Contact Info -->
-        <div class="footer-content">
-            <div class="footer-contact">
-                <h5 class="contact-title">Contact Us</h5>
-                <div class="contact-info">
-                    <p>
-                        <i class="fas fa-envelope"></i>
-                        <span>his2025@ideas-lab.org</span>
-                    </p>
-                    <p>
-                        <i class="fas fa-phone"></i>
-                        <span>+62 897 9400 787</span>
-                    </p>
-                    <p>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Bandung, Indonesia</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="footer-bottom">
-            <p>© 2025 HIS Conference. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
-
-    `
+    </footer>
+`
 };
 
 // Function to load component

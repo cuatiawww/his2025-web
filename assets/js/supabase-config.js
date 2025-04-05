@@ -100,15 +100,22 @@ const dbOperations = {
                     'Content-Type': 'application/json'
                 }
             });
-
+    
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-
+    
             const data = await response.json();
+            console.log("Raw data from Supabase:", data);
             
-            // Group members by role
+            // Group members by role, with error handling
             const groupedMembers = data.reduce((acc, member) => {
+                // Skip members without valid role data
+                if (!member.organization_roles || !member.organization_roles.role_name) {
+                    console.warn("Member missing role information:", member);
+                    return acc;
+                }
+                
                 const roleName = member.organization_roles.role_name;
                 if (!acc[roleName]) {
                     acc[roleName] = [];
@@ -119,7 +126,7 @@ const dbOperations = {
                 });
                 return acc;
             }, {});
-
+    
             return groupedMembers;
         } catch (err) {
             console.error('Error fetching organization members:', err);
@@ -148,6 +155,6 @@ const dbOperations = {
             return null;
         }
     }
-
 };
+
 window.dbOperations = dbOperations;
