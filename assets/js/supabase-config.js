@@ -69,9 +69,18 @@ const dbOperations = {
             return null;
         }
     },
-    getKeynotesSpeakers: async () => {
+    getKeynotesSpeakers: async function() {
         try {
-            const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/keynote_speakers?select=*`, {
+            console.log('Fetching keynote speakers from Supabase...');
+            
+            // Make sure SUPABASE_CONFIG is defined before using it
+            if (!SUPABASE_CONFIG || !SUPABASE_CONFIG.url || !SUPABASE_CONFIG.apiKey) {
+                console.error('SUPABASE_CONFIG is not properly defined');
+                return [];
+            }
+            
+            const response = await fetch(
+                `${SUPABASE_CONFIG.url}/rest/v1/keynote_speakers?select=*`, {
                 headers: {
                     'apikey': SUPABASE_CONFIG.apiKey,
                     'Authorization': `Bearer ${SUPABASE_CONFIG.apiKey}`,
@@ -80,14 +89,16 @@ const dbOperations = {
             });
     
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                console.error(`API error: ${response.status} ${response.statusText}`);
+                throw new Error(`API error: ${response.status} ${response.statusText}`);
             }
     
-            const data = await response.json();
-            return data;
-        } catch (err) {
-            console.error('Error fetching keynote speakers:', err);
-            return null;
+            const speakers = await response.json();
+            console.log('Successfully fetched keynote speakers:', speakers);
+            return speakers;
+        } catch (error) {
+            console.error('Error fetching keynote speakers:', error);
+            throw error; // Re-throw to be handled by the calling function
         }
     },
     getOrganizationMembers: async () => {
@@ -108,7 +119,6 @@ const dbOperations = {
             const data = await response.json();
             console.log("Raw data from Supabase:", data);
             
-            // Group members by role, with error handling
             const groupedMembers = data.reduce((acc, member) => {
                 // Skip members without valid role data
                 if (!member.organization_roles || !member.organization_roles.role_name) {

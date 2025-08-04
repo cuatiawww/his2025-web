@@ -33,22 +33,28 @@ const conferenceData = {
 
     importantDates: [
         {
-            label: "Abstract Submission Deadline",
+            label: "1st Abstract Submmission Deadline",
             // oldDate: "24 June 2025",
-            newDate: "15 June 2025"
+            oldDate: "31 July 2025",
+            newDate:"Closed Date"
+        },
+        {
+            label: "2nd Abstract Submmission Deadline",
+            // oldDate: "24 June 2025",
+            newDate: "15 August 2025"
         },
         {
             label: "Full Paper Submission Deadline",
             // oldDate: "1 July 2025",
-            newDate: "22 June 2025"
+            newDate: "31 August 2025"
         },
         {
             label: "Acceptance Notification",
-            date: "1 September 2025"
+            date: "30 September 2025"
         },
         {
             label: "Camera-Ready Submission",
-            date: "1 October 2025"
+            date: "07 October 2025"
         }
     ],
 };

@@ -12,9 +12,6 @@
         /* Critical inline CSS to ensure keynote speakers content displays properly */
         #keynoteSpeakersContent {
             min-height: 200px;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
         }
         .keynote-speaker-card {
             background: white;
@@ -23,10 +20,11 @@
             margin-bottom: 2.5rem;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
             border-left: 4px solid #008251;
+        }
+        .keynote-speaker-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
         .speaker-name {
             color: #008251;
@@ -67,9 +65,10 @@
         .bio-text p:last-child {
             margin-bottom: 0;
         }
-        /* Hide loading indicator when content is present */
-        #keynoteSpeakersContent:not(:empty) ~ #loadingIndicator {
-            display: none !important;
+        #loadingIndicator {
+            margin: 2rem auto;
+            text-align: center;
+            color: #008251;
         }
     </style>
 </head>
@@ -90,49 +89,11 @@
             <div class="col-lg-8">
                 <!-- Keynote Speakers Content -->
                 <div id="keynoteSpeakersContent">
-                    <h2 class="section-title mb-4">Keynote Speakers</h2>
-                    
-                    <div class="keynote-speaker-card">
-                        <div class="row">
-                            <div class="col-md-4 mb-3 mb-md-0">
-                                <div class="speaker-photo-container">
-                                    <img src="../assets/images/speaker-placeholder.jpg" 
-                                         alt="Prof. Dr. Wahyu Widowati" 
-                                         class="speaker-photo">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="speaker-info">
-                                    <h3 class="speaker-name">Prof. Dr. Wahyu Widowati, M.Si</h3>
-                                    <p class="speaker-affiliation">Biomedicine and Molecular Biology Researcher</p>
-                                    
-                                    <div class="speaker-talk mt-3">
-                                        <h4 class="talk-title">
-                                            <i class="fas fa-microphone-alt"></i> 
-                                            Talk Title: To Be Announced
-                                        </h4>
-                                    </div>
-                                    
-                                    <div class="speaker-bio mt-3">
-                                        <h5 class="bio-heading">
-                                            <i class="fas fa-user-graduate"></i> Biography
-                                        </h5>
-                                        <div class="bio-text">
-                                            <p>Prof. Dr. Wahyu Widowati, M.Si, is a researcher and lecturer specializing in biomedicine, molecular biology, and regenerative medicine. She has published over 156 papers indexed in Scopus, with an H-index of 22 and more than 1,493 citations. In Google Scholar, she has 305 publications, an H-index of 34, and 4,903 citations. Additionally, in Web of Science (WOS), she has 71 documents with an H-index of 13.</p>
-                                            
-                                            <p>Prof. Widowati has actively contributed in total of 23 funded research projects, including grants from PPTI, PTUPT, LPPM-UKM, and DIKTI. She also participated in 31 scientific seminars and conferences as an invited speaker, sharing insights on stem cell applications, herbal-based therapeutics, and biomedical advancements. She has also authored 13 books, in topics such as stem cells, antioxidants, phytotherapy, biomedical sciences, and anti-aging research.</p>
-                                            
-                                            <p>In addition to publications, she holds total of 64 copyright, with 13 granted certificates and 51 in process. These copyrights primarily focus on biomedical research methodologies and herbal-based formulations. As an expert in the field, she has been an active reviewer for Scopus-indexed journals (Q1-4) since 2019 until now with a total of 410 reviewed papers, which contributes to scientific growth.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Will be populated by JavaScript -->
                 </div>
                 
-                <!-- Loading indicator (will be hidden automatically) -->
-                <div id="loadingIndicator" class="text-center" style="display: none;">
+                <!-- Loading indicator -->
+                <div id="loadingIndicator">
                     <i class="fas fa-spinner fa-spin fa-3x"></i>
                     <p>Loading keynote speakers...</p>
                 </div>
@@ -184,22 +145,57 @@
     <div id="footer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Make sure these files are loaded in the correct order -->
     <script src="../assets/js/supabase-config.js"></script>
     <script src="../assets/js/components.js"></script>
     <script src="../assets/js/data.js"></script>
     <script src="../assets/js/clock.js"></script>
     <script src="../assets/js/main.js"></script>
+    
+    <!-- Add this additional script for debugging -->
     <script>
+        // Additional check to ensure everything loads properly
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize page components
-            initializePageComponents();
+            console.log('Keynotes page load check');
             
-            // Start the clock
-            updateClock();
-            setInterval(updateClock, 1000);
+            // Force a check of the current page
+            const currentPage = getCurrentPage();
+            console.log('Current page on special check:', currentPage);
             
-            // Load previous conferences
-            renderPreviousConferences();
+            // Check if the loadKeynoteSpeakers function exists
+            if (typeof loadKeynoteSpeakers === 'function') {
+                console.log('loadKeynoteSpeakers function exists');
+            } else {
+                console.error('loadKeynoteSpeakers function not found!');
+            }
+            
+            // Check if dbOperations is properly loaded
+            if (window.dbOperations && typeof window.dbOperations.getKeynotesSpeakers === 'function') {
+                console.log('dbOperations.getKeynotesSpeakers is properly defined');
+            } else {
+                console.error('dbOperations.getKeynotesSpeakers is not properly defined!');
+            }
+            
+            // Fallback for loading issues - if after 3 seconds still showing loading
+            setTimeout(function() {
+                const loadingIndicator = document.getElementById('loadingIndicator');
+                const contentDiv = document.getElementById('keynoteSpeakersContent');
+                
+                if (loadingIndicator && loadingIndicator.style.display !== 'none') {
+                    console.log('Loading timeout - applying fallback content');
+                    loadingIndicator.style.display = 'none';
+                    
+                    if (contentDiv && !contentDiv.innerHTML.trim()) {
+                        contentDiv.innerHTML = `
+                            <h2 class="section-title mb-4">Keynote Speakers</h2>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i>
+                                Keynote speaker information will be available soon.
+                            </div>
+                        `;
+                    }
+                }
+            }, 3000);
         });
     </script>
 </body>

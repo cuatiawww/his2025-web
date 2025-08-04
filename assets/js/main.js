@@ -36,8 +36,6 @@ async function renderTopics() {
         topicsList.innerHTML = '<li>Failed to load topics</li>';
     }
 }
-// Updated loadKeynoteSpeakers function for main.js
-// Updated loadKeynoteSpeakers function for main.js
 async function loadKeynoteSpeakers() {
     console.log('Loading keynote speakers...');
     
@@ -49,82 +47,133 @@ async function loadKeynoteSpeakers() {
         return;
     }
     
-    // Check if content is already visible (has children elements)
-    if (contentDiv.children.length > 0) {
-        console.log('Keynote speakers content already loaded');
-        if (loadingIndicator) {
-            loadingIndicator.style.display = 'none';
-        }
-        return; // Don't try to load again if content is already there
-    }
-    
     try {
         // Show loading indicator
         if (loadingIndicator) {
             loadingIndicator.style.display = 'block';
         }
 
-        // Try to fetch speakers from Supabase
-        const speakers = await dbOperations.getKeynoteSpeakers();
-        console.log('Fetched keynote speakers:', speakers);
-        
-        if (!speakers || speakers.length === 0) {
-            console.log('No keynote speakers found in database, using fallback content');
+        // Check if dbOperations exists and has the getKeynotesSpeakers function
+        if (!dbOperations || typeof dbOperations.getKeynotesSpeakers !== 'function') {
+            console.error('dbOperations or getKeynotesSpeakers function not found');
+            contentDiv.innerHTML = `
+                <h2 class="section-title mb-4">Keynote Speakers</h2>
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    Configuration error: dbOperations not properly set up.
+                </div>
+            `;
+            if (loadingIndicator) loadingIndicator.style.display = 'none';
             return;
         }
 
-        // Generate HTML for keynote speakers
-        let speakersHTML = `
-            <h2 class="section-title mb-4">Keynote Speakers</h2>
-        `;
+        // Debug: Log before fetching data
+        console.log('Attempting to fetch keynote speakers from dbOperations...');
         
+        // Attempt to fetch the data with error catching
+        let speakers;
+        try {
+            speakers = await dbOperations.getKeynotesSpeakers();
+            // Debug: Log the response
+            console.log('API Response:', speakers);
+        } catch (fetchError) {
+            console.error('Error in getKeynotesSpeakers:', fetchError);
+            throw fetchError;
+        }
+        
+        // Only add heading if not already present
+        if (!contentDiv.querySelector('h2')) {
+            contentDiv.innerHTML = '<h2 class="section-title mb-4">Keynote Speakers</h2>';
+        }
+        
+        // Check if we received valid data
+        if (!speakers || !Array.isArray(speakers) || speakers.length === 0) {
+            console.log('No keynote speakers found in database, using fallback content');
+            contentDiv.innerHTML += `
+                <div class="alert alert-info">
+                    Keynote speaker information will be available soon.
+                </div>
+            `;
+            if (loadingIndicator) loadingIndicator.style.display = 'none';
+            return;
+        }
+
+        // Clear existing speaker cards if any (but keep the heading)
+        const heading = contentDiv.querySelector('h2');
+        contentDiv.innerHTML = '';
+        if (heading) contentDiv.appendChild(heading);
+        else contentDiv.innerHTML = '<h2 class="section-title mb-4">Keynote Speakers</h2>';
+
+        // Generate HTML for each keynote speaker
         speakers.forEach((speaker) => {
-            speakersHTML += `
-                <div class="keynote-speaker-card">
-                    <div class="row">
-                        <div class="col-md-4 mb-3 mb-md-0">
-                            <div class="speaker-photo-container">
-                                <img src="${speaker.photo_url || '../assets/images/speaker-placeholder.jpg'}" 
-                                     alt="${speaker.name}" 
-                                     class="speaker-photo">
-                            </div>
+            const speakerCard = document.createElement('div');
+            speakerCard.className = 'keynote-speaker-card';
+            
+            // Debug: Log current speaker object
+            console.log('Processing speaker:', speaker);
+            
+            // Split bio into paragraphs if it's a string
+            let bioHtml = '';
+            if (speaker.bio) {
+                if (typeof speaker.bio === 'string') {
+                    bioHtml = speaker.bio.split('\n\n')
+                                        .map(paragraph => `<p>${paragraph}</p>`)
+                                        .join('');
+                } else {
+                    bioHtml = `<p>${speaker.bio}</p>`;
+                }
+            }
+            
+            speakerCard.innerHTML = `
+                <div class="row">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="speaker-photo-container">
+                            <img src="${speaker.photo_url || ''}" 
+                                 alt="${speaker.name || 'Speaker'}" 
+                                 class="speaker-photo"
+                                 onerror="this.src='../assets/images/speaker-placeholder.jpg'">
                         </div>
-                        <div class="col-md-8">
-                            <div class="speaker-info">
-                                <h3 class="speaker-name">${speaker.name}</h3>
-                                <p class="speaker-affiliation">${speaker.affiliation}</p>
-                                
-                                <div class="speaker-talk mt-3">
-                                    <h4 class="talk-title">
-                                        <i class="fas fa-microphone-alt"></i> 
-                                        ${speaker.talk_title === 'TBA' ? 'Talk Title: To Be Announced' : speaker.talk_title || 'Talk title to be announced'}
-                                    </h4>
-                                    ${speaker.abstract && speaker.abstract !== 'To be announced' ? `<p class="talk-abstract">${speaker.abstract}</p>` : ''}
-                                </div>
-                                
-                                <div class="speaker-bio mt-3">
-                                    <h5 class="bio-heading">
-                                        <i class="fas fa-user-graduate"></i> Biography
-                                    </h5>
-                                    <div class="bio-text">
-                                        ${speaker.bio.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
-                                    </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="speaker-info">
+                            <h3 class="speaker-name">${speaker.name || 'Speaker Name'}</h3>
+                            <p class="speaker-affiliation">${speaker.affiliation || 'Affiliation'}</p>
+                            
+                            <div class="speaker-talk mt-3">
+                                <h4 class="talk-title">
+                                    <i class="fas fa-microphone-alt"></i> 
+                                    Talk Title: ${speaker.talk_title || 'To Be Announced'}
+                                </h4>
+                                ${speaker.abstract ? `<p class="talk-abstract">${speaker.abstract}</p>` : ''}
+                            </div>
+                            
+                            <div class="speaker-bio mt-3">
+                                <h5 class="bio-heading">
+                                    <i class="fas fa-user-graduate"></i> Biography
+                                </h5>
+                                <div class="bio-text">
+                                    ${bioHtml || '<p>Biography will be available soon.</p>'}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             `;
+            
+            contentDiv.appendChild(speakerCard);
         });
         
-        // Update the DOM
-        contentDiv.innerHTML = speakersHTML;
         console.log('Keynote speakers loaded successfully');
         
     } catch (error) {
         console.error('Error loading keynote speakers:', error);
-        // Don't modify the content div as it already has fallback content
-        console.log('Using fallback content due to error');
+        contentDiv.innerHTML = `
+            <h2 class="section-title mb-4">Keynote Speakers</h2>
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i> 
+                There was an error loading the keynote speakers: ${error.message}
+            </div>
+        `;
     } finally {
         // Always hide loading indicator
         if (loadingIndicator) {
@@ -134,6 +183,9 @@ async function loadKeynoteSpeakers() {
 }
 
 // Update initializePageComponents function to include keynote speakers
+
+// Replace the entire initializePageComponents function in main.js with this one:
+
 function initializePageComponents() {
     const currentPage = getCurrentPage();
     console.log('Current page detected:', currentPage);
@@ -157,7 +209,7 @@ function initializePageComponents() {
     } else if (currentPage === 'organization-committee') {
         loadOrganizationMembers();
     } else if (currentPage === 'keynotes') {
-        // Add this condition for keynote speakers page
+        console.log('Initializing keynote speakers page');
         loadKeynoteSpeakers();
     }
 
@@ -168,6 +220,54 @@ function initializePageComponents() {
         });
     }
 }
+
+// // Replace the DOMContentLoaded event listener in main.js with this one:
+// document.addEventListener('DOMContentLoaded', function() {
+//     console.log('Document ready, initializing components...');
+    
+//     // Initialize page components with check for current page
+//     const currentPage = getCurrentPage();
+//     console.log('Current page on load:', currentPage);
+    
+//     // Initialize page components
+//     initializePageComponents();
+    
+//     // Add scroll animations
+//     const observerOptions = {
+//         threshold: 0.1,
+//         rootMargin: '0px 0px -50px 0px'
+//     };
+
+//     const observer = new IntersectionObserver((entries) => {
+//         entries.forEach(entry => {
+//             if (entry.isIntersecting) {
+//                 entry.target.classList.add('show');
+//                 observer.unobserve(entry.target);
+//             }
+//         });
+//     }, observerOptions);
+
+//     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    
+//     // Initialize venue info if needed
+//     if (document.querySelector('.venue-section')) {
+//         renderVenueInfo();
+//     }
+    
+//     // Extra check for keynotes page to ensure it's loaded
+//     if (currentPage === 'keynotes') {
+//         console.log('Extra check: Ensuring keynote speakers are loaded');
+//         setTimeout(() => {
+//             const loadingIndicator = document.getElementById('loadingIndicator');
+//             if (loadingIndicator && loadingIndicator.style.display !== 'none') {
+//                 console.log('Manually triggering loadKeynoteSpeakers due to timeout');
+//                 loadKeynoteSpeakers();
+//             }
+//         }, 1000);
+//     }
+    
+//     console.log('Initialization complete');
+// });
 
 function renderDates() {
     const datesList = document.getElementById('datesList');
@@ -597,6 +697,10 @@ function initializePageComponents() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Document ready, initializing components...');
     
+    // Initialize page components with check for current page
+    const currentPage = getCurrentPage();
+    console.log('Current page on load:', currentPage);
+    
     // Initialize page components
     initializePageComponents();
     
@@ -620,6 +724,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize venue info if needed
     if (document.querySelector('.venue-section')) {
         renderVenueInfo();
+    }
+    
+    // Extra check for keynotes page to ensure it's loaded
+    if (currentPage === 'keynotes') {
+        console.log('Extra check: Ensuring keynote speakers are loaded');
+        setTimeout(() => {
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            if (loadingIndicator && loadingIndicator.style.display !== 'none') {
+                console.log('Manually triggering loadKeynoteSpeakers due to timeout');
+                loadKeynoteSpeakers();
+            }
+        }, 1000);
     }
     
     console.log('Initialization complete');

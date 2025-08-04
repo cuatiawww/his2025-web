@@ -45,7 +45,7 @@ const components = {
                                 PARTICIPANT INFORMATION
                             </a>
                             <ul class="dropdown-menu animate slideIn" aria-labelledby="participantDropdown">
-                                <li><a class="dropdown-item" href="pages/participant.html#registration">Registration</a></li>
+                                <li><a class="dropdown-item" href="pages/registration.html">Registration</a></li>
                                 <li><a class="dropdown-item" href="pages/conference-venue.html">Venue & Accommodation</a></li>
                                 <li><a class="dropdown-item" href="pages/travel-information.html">Travel Information</a></li>
                                 <li><a class="dropdown-item" href="pages/hotel-booking.html">Hotel Booking</a></li>
@@ -55,30 +55,6 @@ const components = {
                 </div>
             </div>
         </nav>
-    `,
-    registrationModal: `
-        <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header border-0 justify-content-center">
-                        <h5 class="modal-title text-success" id="registrationModalLabel">
-                            <i class="fas fa-info-circle me-2"></i>Registration Information
-                        </h5>
-                    </div>
-                    <div class="modal-body text-center py-4">
-                        <div class="registration-info-icon mb-3">
-                            <i class="fas fa-calendar-alt fa-3x text-success"></i>
-                        </div>
-                        <h4 class="mb-3">Registration Coming Soon</h4>
-                        <p class="mb-4">The registration system for HIS 2025 is currently being prepared and will be available in the coming months. Please check back later for updates on registration procedures and fees.</p>
-                        <p class="small text-muted mb-0">For urgent inquiries, please contact us at <a href="mailto:his2025@ideas-lab.org">his2025@ideas-lab.org</a></p>
-                    </div>
-                    <div class="modal-footer border-0 justify-content-center">
-                        <button type="button" class="btn btn-success px-4" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     `,
     hotelBookingModal: `
         <div class="modal fade" id="hotelBookingModal" tabindex="-1" aria-labelledby="hotelBookingModalLabel" aria-hidden="true">
@@ -148,100 +124,110 @@ const components = {
     `,
 
     // Updated footer component for components.js
-footer: `
- <footer class="footer w-100">
-        <div class="container-fluid">
-            <!-- Conference Organization Section -->
-            <div class="row mb-5">
-                <div class="col-12 text-center mb-4">
-                    <h2 class="section-title text-center">Conference Organization</h2>
-                    <div class="section-divider mx-auto mb-4"></div>
-                </div>
-                
-                <!-- Organized by -->
-                <div class="col-md-6 mb-4">
-                    <div class="organization-box">
-                        <h3 class="organization-title">Organized by</h3>
-                        <div class="organizer-logos">
-                            <div class="organizer-logo-container">
-                                <img src="../assets/images/ideaslab.png" alt="IDEAS LAB Logo" class="img-fluid">
-                            </div>
-                            <div class="organizer-logo-container">
-                                <img src="../assets/images/ukm.png" alt="Universitas Maranatha Logo" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Co-organized by -->
-                <div class="col-md-6 mb-4">
-                    <div class="organization-box">
-                        <h3 class="organization-title">Co-organized by</h3>
-                        <div class="co-organizer-container">
-                            <span>Coming soon</span>
-                        </div>
-                    </div>
-                </div>
+    footer: `
+    <footer class="footer w-100">
+           <div class="container-fluid">
+               <!-- Conference Organization Section -->
+               <div class="row mb-5">
+                   <div class="col-12 text-center mb-4">
+                       <h2 class="section-title text-center">Conference Organization</h2>
+                       <div class="section-divider mx-auto mb-4"></div>
+                   </div>
+                   
+                   <!-- Organized by -->
+                   <div class="col-md-6 mb-4">
+                       <div class="organization-box">
+                           <h3 class="organization-title">Organized by</h3>
+                           <div class="organizer-logos">
+                               <div class="organizer-logo-container">
+                                   <img src="assets/images/ideaslab.png" alt="IDEAS LAB Logo" class="img-fluid">
+                               </div>
+                               <div class="organizer-logo-container" style="width: 180px; height: 120px;">
+                                   <img src="assets/images/ukm.png" alt="Universitas Maranatha Logo" class="img-fluid" style="width: 180px !important; max-width: 100%;">
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   
+                   <!-- Co-organized by -->
+                   <div class="col-md-6 mb-4">
+    <div class="organization-box">
+        <h3 class="organization-title">Co-organized by</h3>
+        <div class="organizer-logos">
+            <div class="organizer-logo-container">
+                <img src="assets/images/cologo.jpeg" alt="ITSB Logo" class="img-fluid">
             </div>
-            
-            <!-- Contact & Information Section -->
-            <div class="row footer-info-section mx-0">
-                <div class="col-lg-4 mb-4">
-                    <h3 class="footer-heading">About HIS 2025</h3>
-                    <p class="footer-text">14th International Conference on Health Information Science (HIS 2025) provides a forum for disseminating and exchanging multidisciplinary research results in computer science/information technology and health science & services.</p>
-                </div>
-                
-                <div class="col-lg-4 mb-4">
-                    <h3 class="footer-heading">Contact Us</h3>
-                    <ul class="footer-contact-list">
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:his2025@ideas-lab.org">his2025@ideas-lab.org</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+62897940078">+62 897 9400 787</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Maranatha Christian University<br>Jl. Surya Sumantri No.65, Bandung,<br>West Java, Indonesia</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-4 mb-4">
-                    <h3 class="footer-heading">Important Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="call.html">Call for Papers</a></li>
-                        <li><a href="organizing-committee.html">Organizing Committee</a></li>
-                        <li><a href="conference-program.html">Conference Schedule</a></li>
-                        <li><a href="conference-venue.html">Venue & Accommodation</a></li>
-                    </ul>
-                    
-                    
-                </div>
+            <div class="organizer-logo-container">
+                <img src="assets/images/cologo2.png" alt="Binus Logo" class="img-fluid">
+            </div>
+            <div class="organizer-logo-container">
+                <img src="assets/images/cologo8.png" alt="Partner Logo" class="img-fluid">
             </div>
         </div>
-        
-        <!-- Copyright Bar - Full Width -->
-        <div class="footer-bottom w-100">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6 ps-4">
-                        <p>&copy; 2025 HIS Conference. All rights reserved.</p>
-                    </div>
-                    <div class="col-md-6 text-md-end pe-4">
-                        <p>Co-located with <a href="https://icot2025.org" target="_blank">ICOT 2025</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-`
+    </div>
+</div>
+               </div>
+               
+               <!-- Contact & Information Section -->
+               <div class="row footer-info-section mx-0">
+                   <div class="col-lg-4 mb-4">
+                       <h3 class="footer-heading">About HIS 2025</h3>
+                       <p class="footer-text">14th International Conference on Health Information Science (HIS 2025) provides a forum for disseminating and exchanging multidisciplinary research results in computer science/information technology and health science & services.</p>
+                   </div>
+                   
+                   <div class="col-lg-4 mb-4">
+                       <h3 class="footer-heading">Contact Us</h3>
+                       <ul class="footer-contact-list">
+                           <li>
+                               <i class="fas fa-envelope"></i>
+                               <a href="mailto:his2025@ideas-lab.org">his2025@ideas-lab.org</a>
+                           </li>
+                           <li>
+                               <i class="fas fa-phone"></i>
+                               <a href="tel:+62897940078">+62 897 9400 787</a>
+                           </li>
+                           <li>
+                               <i class="fas fa-map-marker-alt"></i>
+                               <span>Universitas Kristen Maranatha<br>Jl. Surya Sumantri No.65, Bandung,<br>West Java, Indonesia</span>
+                           </li>
+                       </ul>
+                   </div>
+                   
+                   <div class="col-lg-4 mb-4">
+                       <h3 class="footer-heading">Important Links</h3>
+                       <ul class="footer-links">
+                           <li><a href="index.html">Home</a></li>
+                           <li><a href="pages/call.html">Call for Papers</a></li>
+                           <li><a href="pages/organizing-committee.html">Organizing Committee</a></li>
+                           <li><a href="pages/conference-program.html">Conference Schedule</a></li>
+                           <li><a href="pages/conference-venue.html">Venue & Accommodation</a></li>
+                           <li><a href="pages/registration.html">Registration</a></li>
+                       </ul>
+                       
+                       
+                   </div>
+               </div>
+           </div>
+           
+           <!-- Copyright Bar - Full Width -->
+           <div class="footer-bottom w-100">
+               <div class="container-fluid">
+                   <div class="row">
+                       <div class="col-md-6 ps-4">
+                           <p>&copy; 2025 HIS Conference. All rights reserved.</p>
+                       </div>
+                       <div class="col-md-6 text-md-end pe-4">
+                           <p>Co-located with <a href="https://icot2025.org" target="_blank">ICOT 2025</a></p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </footer>
+   `
 };
 
 // Function to load component
+// Function to load component with proper path handling
 function loadComponent(elementId) {
     const element = document.getElementById(elementId);
     if (!element) return;
@@ -250,16 +236,22 @@ function loadComponent(elementId) {
     let componentHtml = components[elementId];
 
     if (isInPagesDirectory) {
+        // We're in the /pages/ directory, so adjust paths for that location
         componentHtml = componentHtml
             .replace(/href="index.html"/g, 'href="../index.html"')
-            .replace(/href="pages\//g, 'href="');
+            .replace(/href="pages\//g, 'href="')
+            .replace(/src="assets\/images\//g, 'src="../assets/images/');
+    } else {
+        // We're in the root directory, fix image paths for the home page
+        componentHtml = componentHtml
+            .replace(/src="..\/assets\/images\//g, 'src="assets/images/');
     }
 
     element.innerHTML = componentHtml;
 
-    // Inisialisasi komponen setelah dimuat
+    // Initialize components after loading
     if (elementId === 'header') {
-        // Tunggu sedikit untuk memastikan DOM sudah siap
+        // Wait a bit to ensure DOM is ready
         setTimeout(updateActiveNavLink, 100);
     }
     if (elementId === 'sidebar') {
@@ -326,34 +318,15 @@ async function renderConferences() {
     }
 }
 
-
-// Add this to components.js
-
-let registrationModalInstance = null;
 let hotelModalInstance = null;
 
 function initializeModals() {
-    // Initialize Registration Modal
-    if (!document.getElementById('registrationModal')) {
-        const modalDiv = document.createElement('div');
-        modalDiv.innerHTML = components.registrationModal;
-        document.body.appendChild(modalDiv);
-    }
-
-    // Initialize Hotel Booking Modal
+    // Initialize Hotel Booking Modal only
     if (!document.getElementById('hotelBookingModal')) {
         const modalDiv = document.createElement('div');
         modalDiv.innerHTML = components.hotelBookingModal;
         document.body.appendChild(modalDiv);
     }
-
-    // Handle registration links
-    document.querySelectorAll('a[href*="registration"], a[href="#register"]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            showModal('registration');
-        });
-    });
 
     // Handle hotel booking links
     document.querySelectorAll('a[href*="hotel-booking"], a[href*="Hotel Booking"]').forEach(link => {
@@ -364,20 +337,16 @@ function initializeModals() {
     });
 
     // Add modal cleanup handlers
-    setupModalCleanup('registrationModal');
     setupModalCleanup('hotelBookingModal');
 }
 
 function showModal(type) {
-    const modalId = type === 'registration' ? 'registrationModal' : 'hotelBookingModal';
+    // Only handle hotel modal now
+    const modalId = 'hotelBookingModal';
     const modalElement = document.getElementById(modalId);
     
     // Dispose existing instance if any
-    if (type === 'registration' && registrationModalInstance) {
-        registrationModalInstance.dispose();
-        registrationModalInstance = null;
-    }
-    if (type === 'hotel' && hotelModalInstance) {
+    if (hotelModalInstance) {
         hotelModalInstance.dispose();
         hotelModalInstance = null;
     }
@@ -389,11 +358,7 @@ function showModal(type) {
     });
 
     // Store instance
-    if (type === 'registration') {
-        registrationModalInstance = newModal;
-    } else {
-        hotelModalInstance = newModal;
-    }
+    hotelModalInstance = newModal;
 
     // Show modal
     newModal.show();
@@ -415,10 +380,6 @@ function setupModalCleanup(modalId) {
         }
 
         // Dispose modal instance
-        if (modalId === 'registrationModal' && registrationModalInstance) {
-            registrationModalInstance.dispose();
-            registrationModalInstance = null;
-        }
         if (modalId === 'hotelBookingModal' && hotelModalInstance) {
             hotelModalInstance.dispose();
             hotelModalInstance = null;
@@ -437,12 +398,18 @@ function setupModalCleanup(modalId) {
     }
 }
 
-// Update the DOM ready function
+// Handle home page registration button
 document.addEventListener('DOMContentLoaded', function() {
+    // Fix links on home page
+    const registerButtons = document.querySelectorAll('a[href="#register"]');
+    registerButtons.forEach(button => {
+        button.setAttribute('href', 'pages/registration.html');
+    });
+    
     ['header', 'footer', 'sidebar'].forEach(id => {
         loadComponent(id);
     });
     
-    // Initialize all modals
+    // Initialize hotel modal only
     initializeModals();
 });
