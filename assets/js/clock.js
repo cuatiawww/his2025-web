@@ -1,6 +1,6 @@
 function updateCountdown() {
-    // Event date: October 28, 2025
-    const eventDate = new Date('2025-10-28T00:00:00+07:00');
+    // Event date: December 2, 2025
+    const eventDate = new Date('2025-12-02T00:00:00+07:00');
     const now = new Date();
     
     // Calculate time difference

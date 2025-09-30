@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../assets/css/style.css" rel="stylesheet">
     <style>
-        /* Registration Page Specific Styles */
         .registration-container {
             background-color: white;
             border-radius: 8px;
@@ -25,6 +24,54 @@
             padding-bottom: 0.75rem;
             border-bottom: 2px solid #008251;
             position: relative;
+        }
+        
+        .registration-cta {
+            background: linear-gradient(135deg, #008251 0%, #00a566 100%);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 24px rgba(0, 130, 81, 0.2);
+        }
+        
+        .registration-cta h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .registration-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .register-btn {
+            background: white;
+            color: #008251;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            color: #00a566;
+        }
+        
+        .register-btn i {
+            font-size: 1.3rem;
         }
         
         .registration-table {
@@ -54,31 +101,6 @@
             background-color: #e9ecef;
             font-weight: 600;
             text-align: left;
-        }
-        
-        .payment-method {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #008251;
-        }
-        
-        .payment-method h4 {
-            color: #008251;
-            margin-bottom: 1rem;
-        }
-        
-        .payment-icons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .payment-icons img {
-            height: 40px;
-            border-radius: 4px;
         }
         
         .note-box {
@@ -111,12 +133,24 @@
             margin-bottom: 1rem;
         }
         
-        /* Table for mobile */
         @media (max-width: 768px) {
             .registration-table {
                 display: block;
                 overflow-x: auto;
                 white-space: nowrap;
+            }
+            
+            .registration-cta {
+                padding: 2rem 1.5rem;
+            }
+            
+            .registration-cta h2 {
+                font-size: 1.5rem;
+            }
+            
+            .register-btn {
+                padding: 0.9rem 2rem;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -124,7 +158,6 @@
 <body>
     <div id="header"></div>
 
-    <!-- Hero Banner -->
     <header class="hero-banner">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -138,6 +171,18 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-8">
+                <!-- Registration CTA -->
+                <div class="registration-cta">
+                    <h2>Register for HIS 2025 Conference</h2>
+                    <p>Secure your spot at the 14th International Conference on Health Information Science</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfAKai2HTOp-0lhO1QxxzIWjJc_Fieu_jSzQTBWgxyURmQx3w/viewform?usp=dialog" 
+                       target="_blank" 
+                       class="register-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Register Now
+                    </a>
+                </div>
+
                 <div class="registration-container">
                     <h2 class="section-title">Registration Fees</h2>
                     
@@ -200,8 +245,6 @@
                             <tr>
                                 <th>Registration Type</th>
                                 <th>Conference Materials</th>
-                                <th>Welcome Reception</th>
-                                <th>Conference Dinner</th>
                                 <th>Lunches</th>
                                 <th>Coffee Breaks</th>
                             </tr>
@@ -212,21 +255,15 @@
                                 <td><i class="fas fa-check text-success"></i></td>
                                 <td><i class="fas fa-check text-success"></i></td>
                                 <td><i class="fas fa-check text-success"></i></td>
-                                <td><i class="fas fa-check text-success"></i></td>
-                                <td><i class="fas fa-check text-success"></i></td>
                             </tr>
                             <tr>
                                 <td class="category-header">Student/Professional Presenter (Online)</td>
                                 <td><i class="fas fa-check text-success"></i></td>
                                 <td><i class="fas fa-times text-danger"></i></td>
                                 <td><i class="fas fa-times text-danger"></i></td>
-                                <td><i class="fas fa-times text-danger"></i></td>
-                                <td><i class="fas fa-times text-danger"></i></td>
                             </tr>
                             <tr>
                                 <td class="category-header">Participant (Onsite)</td>
-                                <td><i class="fas fa-check text-success"></i></td>
-                                <td><i class="fas fa-check text-success"></i></td>
                                 <td><i class="fas fa-check text-success"></i></td>
                                 <td><i class="fas fa-check text-success"></i></td>
                                 <td><i class="fas fa-check text-success"></i></td>
@@ -236,55 +273,22 @@
                                 <td><i class="fas fa-check text-success"></i></td>
                                 <td><i class="fas fa-times text-danger"></i></td>
                                 <td><i class="fas fa-times text-danger"></i></td>
-                                <td><i class="fas fa-times text-danger"></i></td>
-                                <td><i class="fas fa-times text-danger"></i></td>
                             </tr>
                         </tbody>
                     </table>
-                    
-                    <h2 class="section-title">Payment Methods</h2>
-                    
-                    <div class="payment-method">
-                        <h4><i class="fas fa-credit-card me-2"></i>Bank Transfer</h4>
-                        <p>Please transfer your registration fee to the following account:</p>
-                        <div class="alert alert-light">
-                            <p><strong>Bank Name:</strong> Bank Mandiri</p>
-                            <p><strong>Account Name:</strong> IDEAS LAB Indonesia</p>
-                            <p><strong>Account Number:</strong> 1234567890</p>
-                            <p><strong>Swift Code:</strong> BMRIIDJA</p>
-                            <p><strong>Reference:</strong> HIS2025_[Your Name]_[Paper ID]</p>
-                        </div>
-                    </div>
-                    
-                    <div class="payment-method">
-                        <h4><i class="fas fa-mobile-alt me-2"></i>E-Wallet Payment</h4>
-                        <p>We accept the following Indonesian e-wallet payments:</p>
-                        <div class="payment-icons">
-                            <!-- <img src="../assets/images/payment/ovo.png" alt="OVO">
-                            <img src="../assets/images/payment/gopay.png" alt="GoPay">
-                            <img src="../assets/images/payment/dana.png" alt="DANA">
-                            <img src="../assets/images/payment/linkaja.png" alt="LinkAja"> -->
-                        </div>
-                        <p class="mt-3">To pay using an e-wallet, please scan the QRIS code below:</p>
-                        <div class="text-center my-3">
-                            <!-- <img src="../assets/images/payment/qris-code.png" alt="QRIS Code" style="max-width: 200px;"> -->
-                        </div>
-                        <p>After payment, please email your payment confirmation to <a href="mailto:registration@his2025.org">registration@his2025.org</a> with your name and paper ID.</p>
-                    </div>
-                    
-                    <div class="payment-method">
-                        <h4><i class="fas fa-globe me-2"></i>International Credit Card</h4>
-                        <p>For international participants, we accept payment via credit card through our secure payment gateway.</p>
-                        <a href="#" class="btn btn-success mt-2">Pay with Credit Card</a>
-                    </div>
-                    
+
                     <h2 class="section-title">Registration Process</h2>
                     
                     <ol>
-                        <li>Download the registration form <a href="../assets/docs/registration-form.pdf" class="text-success">here</a></li>
-                        <li>Fill out the form with your details</li>
-                        <li>Make the payment using one of the available methods</li>
-                        <li>Email the completed form and payment proof to <a href="mailto:registration@his2025.org">registration@his2025.org</a></li>
+                        <li>Click the <strong>"Register Now"</strong> button above to fill out the online registration form</li>
+                        <li>Pay using one of the available methods:
+                            <ul>
+                                <li><strong>Bank Transfer (Wire/TT)</strong> - via secure card gateway</li>
+                                <li><strong>Indonesian E-Wallets (QRIS)</strong> - OVO, GoPay, DANA, LinkAja</li>
+                                <li><strong>International Credit Card</strong> - for overseas participants</li>
+                            </ul>
+                        </li>
+                        <li>Email the payment proof to <a href="mailto:icot2025@ideas-lab.org" class="text-success fw-bold">icot2025@ideas-lab.org</a> (include your name and paper ID)</li>
                         <li>You will receive a confirmation email with your registration details</li>
                         <li>For onsite participants, collect your conference kit at the registration desk</li>
                     </ol>
@@ -292,15 +296,14 @@
                     <div class="contact-info">
                         <h4><i class="fas fa-envelope me-2"></i>Registration Contact</h4>
                         <p>For any inquiries regarding registration, please contact:</p>
-                        <p><strong>Email:</strong> <a href="mailto:registration@his2025.org">registration@his2025.org</a></p>
-                        <p><strong>Phone:</strong> +62 812 3456 7890</p>
+                        <p><strong>Email:</strong> <a href="mailto:icot2025@ideas-lab.org" class="text-success">icot2025@ideas-lab.org</a></p>
+                        <p><strong>Phone:</strong> +62 897 9400 787</p>
+                        <p class="mb-0"><strong>Security Note:</strong> ICOT will never request payment to personal accounts or via messaging apps. Use only official channels listed above.</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Sidebar -->
             <div class="col-lg-4" id="sidebar">
-                <!-- Time Display -->
                 <div class="time-display mb-4">
                     <h4 class="time-heading">
                         <i class="fas fa-clock"></i>
@@ -326,7 +329,6 @@
                     </div>
                 </div>
                 
-                <!-- Important Dates -->
                 <div class="previous-conferences-box mb-4">
                     <h4 class="conf-heading">
                         <i class="fas fa-calendar-alt"></i>
@@ -336,7 +338,7 @@
                         <ul class="list-unstyled">
                             <li class="mb-3">
                                 <strong>Early Bird Registration:</strong><br>
-                                Until August 31, 2025
+                                Until October 7, 2025
                             </li>
                             <li class="mb-3">
                                 <strong>Regular Registration:</strong><br>
@@ -344,22 +346,19 @@
                             </li>
                             <li class="mb-3">
                                 <strong>Conference Dates:</strong><br>
-                                October 28-30, 2025
+                                December 2-4, 2025
                             </li>
                         </ul>
                     </div>
                 </div>
                 
-                <!-- Previous Conferences Box -->
                 <div class="previous-conferences-box">
                     <h4 class="conf-heading">
                         <i class="fas fa-history"></i>
                         Previous Conferences
                     </h4>
                     <div class="conferences-container">
-                        <ul class="conference-list" id="prevConferencesList">
-                            <!-- Will be populated by JavaScript -->
-                        </ul>
+                        <ul class="conference-list" id="prevConferencesList"></ul>
                     </div>
                 </div>
             </div>
@@ -375,13 +374,298 @@
     <script src="../assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize page components
             initializePageComponents();
-            
-            // Start the clock
             updateClock();
             setInterval(updateClock, 1000);
         });
     </script>
+</body>
+</html>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <style>
+        .documents-section {
+            background: white;
+            border-radius: 16px;
+            padding: 0;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .documents-header {
+            background: linear-gradient(135deg, #008251 0%, #00a566 100%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 2rem;
+            margin: 0;
+            text-align: left;
+        }
+        
+        .documents-header i {
+            margin-right: 0.75rem;
+            font-size: 1.3rem;
+        }
+        
+        .documents-body {
+            padding: 2rem;
+        }
+        
+        .document-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #008251 0%, #00a566 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .document-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 130, 81, 0.15);
+            border-color: #008251;
+            background: white;
+        }
+        
+        .document-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .document-icon {
+            color: #008251;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .document-title {
+            color: #1a1a1a;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .document-card:hover .document-title {
+            color: #008251;
+        }
+        
+        .document-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin: 0 0 1rem 0;
+            line-height: 1.6;
+        }
+        
+        .document-action {
+            color: #008251;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .document-card:hover .document-action {
+            color: #00a566;
+        }
+        
+        .document-action i {
+            transition: transform 0.3s ease;
+        }
+        
+        .document-card:hover .document-action i {
+            transform: translateY(2px);
+        }
+        
+        .transport-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #008251;
+        }
+        
+        .transport-title {
+            color: #008251;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .transport-list {
+            margin-left: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .documents-header {
+                padding: 1.5rem;
+                font-size: 1.25rem;
+            }
+            
+            .documents-body {
+                padding: 1.5rem;
+            }
+            
+            .document-card {
+                padding: 1.5rem;
+            }
+            
+            .document-icon {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <header class="hero-banner venue-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="display-4 text-white text-center">HIS 2025 @ Bandung</h1>
+                <h2 class="h2 text-white text-center">Conference Venue</h2>
+            </div>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="venue-section">
+                    <h3 class="section-title">Conference Venue</h3>
+                    <p><strong>Address:</strong> Universitas Kristen Maranatha, Jl. Prof. drg. Surya Sumantri No.65, Sukawarna, Kec. Sukajadi, Kota Bandung, Jawa Barat 40164, Indonesia</p>
+                    
+                    <iframe class="venue-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1135845614374!2d107.57324731477269!3d-6.886386095025384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6873a8cf5a7%3A0x4e428c8a3478df11!2sMaranatha%20Christian%20University!5e0!3m2!1sen!2sid!4v1644297747015!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="venue-section">
+                    <h3 class="section-title">About Universitas Kristen Maranatha</h3>
+                    <p>Universitas Kristen Maranatha is one of Indonesia's premier private Christian universities, located in the heart of Bandung city. Founded in 1965, the university has established itself as a leading institution for higher education in Indonesia, consistently delivering excellence in academic programs and research.</p>
+                    <p>The university's modern facilities and strategic location make it an ideal venue for international conferences. With state-of-the-art conference halls, advanced technological infrastructure, and a beautiful campus environment, Maranatha provides the perfect setting for academic discourse and professional networking.</p>
+                </div>
+
+                <div class="venue-section">
+                    <h3 class="section-title">Getting to Maranatha University</h3>
+                    <p>Universitas Kristen Maranatha is centrally located in Bandung with easy access via various transportation options:</p>
+                    
+                    <div class="transport-item">
+                        <div class="transport-title">From Recommended Hotels (Pasteur Area):</div>
+                        <p>Most recommended hotels (Aston Pasteur, Rooms Inc., etc.) are located near the Cititrans pool on Jl. Dr. Djunjunan No. 153 (Pasteur).</p>
+                        <ul class="transport-list">
+                            <li><strong>Distance to Maranatha:</strong> Approximately 5-7 km</li>
+                            <li><strong>Travel time:</strong> 15-20 minutes by taxi or Grab/Gojek</li>
+                            <li><strong>Estimated fare:</strong> Rp. 30,000 - 50,000</li>
+                        </ul>
+                    </div>
+
+                    <div class="transport-item">
+                        <div class="transport-title">From Bandung Train Station:</div>
+                        <p>If arriving via WHOOSH feeder train or regular train services:</p>
+                        <ul class="transport-list">
+                            <li><strong>Distance:</strong> Approximately 4 km from Bandung Station</li>
+                            <li><strong>Take a taxi or Grab/Gojek:</strong> 15-20 minutes, Rp. ~50,000</li>
+                        </ul>
+                    </div>
+
+                    <div class="transport-item">
+                        <div class="transport-title">From Padalarang Station (WHOOSH):</div>
+                        <p>Padalarang Station is the closest WHOOSH station to the conference venue:</p>
+                        <ul class="transport-list">
+                            <li><strong>Distance:</strong> Approximately 10-12 km</li>
+                            <li><strong>Recommended:</strong> Take taxi or Grab/Gojek directly to venue</li>
+                            <li><strong>Travel time:</strong> 20-25 minutes, Rp. 60,000 - 80,000</li>
+                            <li><strong>Alternative:</strong> Take free feeder train to Bandung Station, then taxi (adds 40 minutes total)</li>
+                        </ul>
+                    </div>
+
+                    <div class="transport-item">
+                        <div class="transport-title">Recommended Transportation Apps:</div>
+                        <ul class="transport-list">
+                            <li><strong>Grab:</strong> Download from App Store or Google Play (ride-hailing app)</li>
+                            <li><strong>Gojek:</strong> Local ride-hailing app with competitive prices</li>
+                            <li><strong>Blue Bird:</strong> Traditional taxi service, can be booked via phone or app</li>
+                            <li><strong>Tip:</strong> Download and set up these apps before arrival in Indonesia</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="venue-section">
+                    <div class="documents-section">
+                        <h3 class="documents-header">
+                            <i class="fas fa-file-alt"></i>
+                            Important Transportation Documents
+                        </h3>
+                        
+                        <div class="documents-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <a href="../assets/docs/Guidelines_on_how_to_get_from_Soekarno_Hatta_Airport_to_Bandung.pptx" 
+                                       class="document-card" download>
+                                        <div class="document-icon">
+                                            <i class="fas fa-plane-departure"></i>
+                                        </div>
+                                        <h5 class="document-title">From Soekarno-Hatta Airport to Bandung</h5>
+                                        <p class="document-description">Complete guide on transportation options from Jakarta's main airport to Bandung city</p>
+                                        <div class="document-action">
+                                            <i class="fas fa-download me-2"></i>Click to Download
+                                        </div>
+                                    </a>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <a href="../assets/docs/Guidelines_on_how_to_get_from_Bandung_to_Soekarno_Hatta_Airport.pptx" 
+                                       class="document-card" download>
+                                        <div class="document-icon">
+                                            <i class="fas fa-plane-arrival"></i>
+                                        </div>
+                                        <h5 class="document-title">From Bandung to Soekarno-Hatta Airport</h5>
+                                        <p class="document-description">Important information about return journey options and recommended travel times</p>
+                                        <div class="document-action">
+                                            <i class="fas fa-download me-2"></i>Click to Download
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4" id="sidebar"></div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/supabase-config.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/clock.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -7,8 +7,122 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../assets/css/style.css" rel="stylesheet">
-    <!-- <style>
-        /* Travel page specific styles */
+    <style>
+        .documents-section {
+            background: white;
+            border-radius: 16px;
+            padding: 0;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .documents-header {
+            background: linear-gradient(135deg, #008251 0%, #00a566 100%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 2rem;
+            margin: 0;
+            text-align: left;
+        }
+        
+        .documents-header i {
+            margin-right: 0.75rem;
+            font-size: 1.3rem;
+        }
+        
+        .documents-body {
+            padding: 2rem;
+        }
+        
+        .document-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #008251 0%, #00a566 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .document-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 130, 81, 0.15);
+            border-color: #008251;
+            background: white;
+        }
+        
+        .document-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .document-icon {
+            color: #008251;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .document-title {
+            color: #1a1a1a;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .document-card:hover .document-title {
+            color: #008251;
+        }
+        
+        .document-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin: 0 0 1rem 0;
+            line-height: 1.6;
+        }
+        
+        .document-action {
+            color: #008251;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .document-card:hover .document-action {
+            color: #00a566;
+        }
+        
+        .document-action i {
+            transition: transform 0.3s ease;
+        }
+        
+        .document-card:hover .document-action i {
+            transform: translateY(2px);
+        }
+        
         .travel-item {
             margin-bottom: 1.5rem;
             padding: 1.5rem;
@@ -58,12 +172,30 @@
             color: #006c42;
             text-decoration: underline;
         }
-    </style> -->
+
+        @media (max-width: 768px) {
+            .documents-header {
+                padding: 1.5rem;
+                font-size: 1.25rem;
+            }
+            
+            .documents-body {
+                padding: 1.5rem;
+            }
+            
+            .document-card {
+                padding: 1.5rem;
+            }
+            
+            .document-icon {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="header"></div>
 
-    <!-- Hero Banner -->
     <header class="hero-banner travel-banner">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -77,52 +209,101 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-8">
-                <!-- Going to Bandung -->
+                <div class="documents-section mb-4">
+                    <h3 class="documents-header">
+                        <i class="fas fa-file-alt"></i>
+                        Important Transportation Documents
+                    </h3>
+                    
+                    <div class="documents-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <a href="../assets/docs/Guidelines_on_how_to_get_from_Soekarno_Hatta_Airport_to_Bandung.pdf" 
+                                   class="document-card" download>
+                                    <div class="document-icon">
+                                        <i class="fas fa-plane-departure"></i>
+                                    </div>
+                                    <h5 class="document-title">From Soekarno-Hatta Airport to Bandung</h5>
+                                    <p class="document-description">Complete guide on transportation options from Jakarta's main airport to Bandung city</p>
+                                    <div class="document-action">
+                                        <i class="fas fa-download me-2"></i>Click to Download
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <a href="../assets/docs/Guidelines_on_how_to_get_from_Bandung_to_Soekarno_Hatta_Airport.pdf" 
+                                   class="document-card" download>
+                                    <div class="document-icon">
+                                        <i class="fas fa-plane-arrival"></i>
+                                    </div>
+                                    <h5 class="document-title">From Bandung to Soekarno-Hatta Airport</h5>
+                                    <p class="document-description">Important information about return journey options and recommended travel times</p>
+                                    <div class="document-action">
+                                        <i class="fas fa-download me-2"></i>Click to Download
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="info-section">
                     <h3 class="section-title">Getting to Bandung</h3>
                     
                     <div class="travel-item">
-                        <h4><i class="fas fa-train travel-icon"></i>By High-Speed Rail (WHOOSH)</h4>
-                        <p>The new WHOOSH high-speed rail service connects Jakarta and Bandung in just 36-45 minutes:</p>
+                        <h4><i class="fas fa-bus travel-icon"></i>By Shuttle Bus (Cititrans)</h4>
+                        <p><strong>From Soekarno-Hatta Airport to Bandung:</strong></p>
+                        <p>Take Cititrans shuttle bus from the airport directly to Bandung (Pasteur area). The pool is located at Jl. Dr. Djunjunan No. 153, very close to recommended hotels like Rooms Inc. Hotel and Aston Pasteur Hotel.</p>
                         <ul class="mb-3">
-                            <li>Jakarta Station: Halim Station (East Jakarta)</li>
-                            <li>Bandung Station: <strong>Padalarang Station</strong> (West Bandung)</li>
-                            <li>Multiple daily departures</li>
+                            <li><strong>Price:</strong> Rp. 210,000 per person</li>
+                            <li><strong>Departures:</strong> Every 15 minutes from 00:30 to 23:59 daily</li>
+                            <li><strong>Travel time:</strong> Approximately 3 hours</li>
+                            <li><strong>Capacity:</strong> 8 seats per shuttle bus</li>
                         </ul>
-                        <p>From Padalarang Station to the conference venue, take a taxi or ride-hailing service (approximately 15-20 minutes). This station is closer to the conference venue than Tegalluar Station.</p>
+                        <p><em>This is the most convenient option for direct transportation from the airport to Bandung.</em></p>
                     </div>
 
                     <div class="travel-item">
-                        <h4><i class="fas fa-plane travel-icon"></i>By Air</h4>
-                        <p><strong>Kertajati International Airport (KJT)</strong> is now the main international airport serving West Java. Located about 68 km from Bandung, it offers domestic flights and some international routes.</p>
-                        <p>International visitors can also arrive at Jakarta's Soekarno-Hatta International Airport (CGK) and continue to Bandung via high-speed rail (WHOOSH) or other ground transportation.</p>
+                        <h4><i class="fas fa-train travel-icon"></i>By WHOOSH High-Speed Train</h4>
+                        <p><strong>Route:</strong> Halim Station (Jakarta) → Padalarang Station (Bandung)</p>
+                        <p><strong>Step-by-step process:</strong></p>
+                        <ol>
+                            <li>From Soekarno-Hatta Airport, take DAMRI bus to Halim Station (Rp. 80,000, every hour, ~1 hour journey)</li>
+                            <li>Take WHOOSH train from Halim to Padalarang (Rp. 150,000 - 300,000, ~30 minutes)</li>
+                            <li>Take FREE feeder train from Padalarang to Bandung Station (~20 minutes, operates 05:40-20:20)</li>
+                            <li>Take taxi/Grab from Bandung Station to your hotel (Rp. ~50,000, ~15-20 minutes)</li>
+                        </ol>
+                        <ul class="mb-3">
+                            <li><strong>WHOOSH Schedule:</strong> 06:08 to 20:48, every 30 minutes to 1 hour</li>
+                            <li><strong>Total journey time:</strong> Approximately 2.5-3 hours</li>
+                            <li><strong>Advantage:</strong> Faster and more modern, but requires multiple transfers</li>
+                        </ul>
+                    </div>
+
+                    <div class="travel-item">
+                        <h4><i class="fas fa-plane travel-icon"></i>Alternative: Kertajati International Airport</h4>
+                        <p><strong>Kertajati International Airport (KJT)</strong> serves West Java with domestic and some international flights.</p>
+                        <ul>
+                            <li>Located about 68 km from Bandung city center</li>
+                            <li>Travel time: Approximately 2 hours by car or shuttle bus</li>
+                            <li>Less crowded than Soekarno-Hatta Airport</li>
+                        </ul>
                         <p><em>Note: Husein Sastranegara Airport (BDO) in Bandung now has very limited service with few domestic flights.</em></p>
-                        <p>From Kertajati Airport to Bandung city center takes approximately 2 hours by car or shuttle bus.</p>
                     </div>
 
                     <div class="travel-item">
-                        <h4><i class="fas fa-train travel-icon"></i>By Regular Train</h4>
-                        <p>Regular train services connect Bandung Railway Station with major Indonesian cities:</p>
+                        <h4><i class="fas fa-car travel-icon"></i>Local Transportation in Bandung</h4>
+                        <p>Once in Bandung, use these transportation options:</p>
                         <ul>
-                            <li>Jakarta - Bandung: 3-3.5 hours (executive class available)</li>
-                            <li>Multiple daily departures from Gambir Station (Jakarta)</li>
-                            <li>From Bandung Station to venue: 15-20 minutes by taxi</li>
-                        </ul>
-                    </div>
-
-                    <div class="travel-item">
-                        <h4><i class="fas fa-car travel-icon"></i>Ground Transportation</h4>
-                        <p>Local transportation options in Bandung:</p>
-                        <ul>
-                            <li>Taxis: Blue Bird Group (most reliable)</li>
-                            <li>Ride-hailing: Grab, Gojek</li>
-                            <li>Online taxi booking through apps</li>
-                            <li>Hotel shuttle services (check with your accommodation)</li>
+                            <li><strong>Taxis:</strong> Blue Bird Group (most reliable)</li>
+                            <li><strong>Ride-hailing:</strong> Grab, Gojek (recommended - download apps before arrival)</li>
+                            <li><strong>Typical fares:</strong> Rp. 30,000 - 50,000 for trips within city center</li>
+                            <li><strong>Hotel shuttles:</strong> Check with your accommodation for availability</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Visa Information -->
                 <div class="info-section">
                     <h3 class="section-title">Visa Information</h3>
                     
@@ -152,7 +333,6 @@
                     </div>
                 </div>
                 
-                <!-- Accommodation -->
                 <div class="info-section">
                     <h3 class="section-title">Accommodation Information</h3>
                     
@@ -160,30 +340,29 @@
                         <h4><i class="fas fa-hotel travel-icon"></i>Recommended Hotels</h4>
                         <p>We recommend the following hotels near the conference venue:</p>
                         <ul>
-                            <li><strong>Grand Mercure Bandung Setiabudi</strong> - 5-star hotel with modern amenities</li>
-                            <li><strong>Harris Hotel & Conventions Ciumbuleuit</strong> - 4-star hotel close to universities</li>
-                            <li><strong>Hilton Bandung</strong> - Luxury accommodation in central Bandung</li>
-                            <li><strong>Crowne Plaza Bandung</strong> - Premium hotel with excellent facilities</li>
-                            <li><strong>The Papandayan</strong> - Classic upscale hotel with Indonesian character</li>
+                            <li><strong>Aston Tropicana Hotel Bandung</strong> - 4-star hotel with modern facilities, located in the heart of Bandung. Features meeting rooms, restaurant, and spa. Distance to venue: approximately 20 minutes.</li>
+                            <li><strong>Aston Pasteur Hotel</strong> - Contemporary 4-star hotel in Pasteur area with easy access to shopping and dining. Approximately 15 minutes to the conference venue.</li>
+                            <li><strong>Botanika Nature Hotel</strong> - Boutique hotel with natural ambiance, featuring eco-friendly design and garden views. Located near Lembang, about 30-40 minutes from the venue.</li>
+                            <li><strong>Holiday Inn Bandung Pasteur</strong> - International chain hotel with reliable service, business facilities, and fitness center. About 15-20 minutes to Maranatha University.</li>
+                            <li><strong>Holiday Inn Express Bandung Dago</strong> - Budget-friendly option from the Holiday Inn family, located in Dago area with good access to universities and shopping areas. Approximately 10-15 minutes to venue.</li>
                         </ul>
-                        <p>Special rates for conference attendees will be announced closer to the event date.</p>
+                        <p>Special rates for conference attendees may be available. Please contact the hotels directly and mention the HIS 2025 conference for potential discounts.</p>
                     </div>
                     
                     <div class="travel-item">
                         <h4><i class="fas fa-map-marker-alt travel-icon"></i>Popular Areas to Stay</h4>
                         <ul>
-                            <li><strong>Dago Area</strong> - Close to universities and shopping</li>
-                            <li><strong>Braga Street</strong> - Historic area with colonial architecture</li>
-                            <li><strong>Setiabudi Area</strong> - Upscale neighborhood with many facilities</li>
-                            <li><strong>Riau Street (Jl. L.L.R.E. Martadinata)</strong> - Shopping and culinary hotspot</li>
+                            <li><strong>Dago Area</strong> - Close to universities, shopping centers, and restaurants. Excellent choice for conference attendees.</li>
+                            <li><strong>Pasteur Area</strong> - Modern neighborhood with many hotels, close to the conference venue.</li>
+                            <li><strong>Braga Street</strong> - Historic area with colonial architecture and vibrant nightlife.</li>
+                            <li><strong>Setiabudi Area</strong> - Upscale neighborhood with shopping malls and international restaurants.</li>
+                            <li><strong>Riau Street (Jl. L.L.R.E. Martadinata)</strong> - Shopping and culinary hotspot with local flavor.</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            <!-- Sidebar -->
             <div class="col-lg-4" id="sidebar">
-                <!-- Time Display -->
                 <div class="time-display mb-4">
                     <h4 class="time-heading">
                         <i class="fas fa-clock"></i>
@@ -209,7 +388,6 @@
                     </div>
                 </div>
                 
-                <!-- Weather Info -->
                 <div class="previous-conferences-box mb-4">
                     <h4 class="conf-heading">
                         <i class="fas fa-cloud-sun"></i>
@@ -224,16 +402,13 @@
                     </div>
                 </div>
                 
-                <!-- Previous Conferences Box -->
                 <div class="previous-conferences-box">
                     <h4 class="conf-heading">
                         <i class="fas fa-history"></i>
                         Previous Conferences
                     </h4>
                     <div class="conferences-container">
-                        <ul class="conference-list" id="prevConferencesList">
-                            <!-- Will be populated by JavaScript -->
-                        </ul>
+                        <ul class="conference-list" id="prevConferencesList"></ul>
                     </div>
                 </div>
             </div>
@@ -250,14 +425,9 @@
     <script src="../assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize page components
             initializePageComponents();
-            
-            // Start the clock
             updateClock();
             setInterval(updateClock, 1000);
-            
-            // Load previous conferences
             renderPreviousConferences();
         });
     </script>

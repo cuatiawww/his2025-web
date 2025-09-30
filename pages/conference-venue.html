@@ -7,11 +7,164 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../assets/css/style.css" rel="stylesheet">
+    <style>
+        .documents-section {
+            background: white;
+            border-radius: 16px;
+            padding: 0;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .documents-header {
+            background: linear-gradient(135deg, #008251 0%, #00a566 100%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 2rem;
+            margin: 0;
+            text-align: left;
+        }
+        
+        .documents-header i {
+            margin-right: 0.75rem;
+            font-size: 1.3rem;
+        }
+        
+        .documents-body {
+            padding: 2rem;
+        }
+        
+        .document-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #008251 0%, #00a566 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .document-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 130, 81, 0.15);
+            border-color: #008251;
+            background: white;
+        }
+        
+        .document-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .document-icon {
+            color: #008251;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .document-title {
+            color: #1a1a1a;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .document-card:hover .document-title {
+            color: #008251;
+        }
+        
+        .document-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin: 0 0 1rem 0;
+            line-height: 1.6;
+        }
+        
+        .document-action {
+            color: #008251;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .document-card:hover .document-action {
+            color: #00a566;
+        }
+        
+        .document-action i {
+            transition: transform 0.3s ease;
+        }
+        
+        .document-card:hover .document-action i {
+            transform: translateY(2px);
+        }
+        
+        .transport-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #008251;
+        }
+        
+        .transport-title {
+            color: #008251;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .transport-list {
+            margin-left: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .documents-header {
+                padding: 1.5rem;
+                font-size: 1.25rem;
+            }
+            
+            .documents-body {
+                padding: 1.5rem;
+            }
+            
+            .document-card {
+                padding: 1.5rem;
+            }
+            
+            .document-icon {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="header"></div>
 
-    <!-- Hero Banner -->
     <header class="hero-banner venue-banner">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -25,78 +178,106 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-8">
-                <!-- Venue Information -->
                 <div class="venue-section">
                     <h3 class="section-title">Conference Venue</h3>
                     <p><strong>Address:</strong> Universitas Kristen Maranatha, Jl. Prof. drg. Surya Sumantri No.65, Sukawarna, Kec. Sukajadi, Kota Bandung, Jawa Barat 40164, Indonesia</p>
                     
-                    <!-- Google Maps Embed -->
                     <iframe class="venue-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1135845614374!2d107.57324731477269!3d-6.886386095025384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6873a8cf5a7%3A0x4e428c8a3478df11!2sMaranatha%20Christian%20University!5e0!3m2!1sen!2sid!4v1644297747015!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
                 </div>
 
-                <!-- About Maranatha -->
                 <div class="venue-section">
                     <h3 class="section-title">About Universitas Kristen Maranatha</h3>
                     <p>Universitas Kristen Maranatha is one of Indonesia's premier private Christian universities, located in the heart of Bandung city. Founded in 1965, the university has established itself as a leading institution for higher education in Indonesia, consistently delivering excellence in academic programs and research.</p>
                     <p>The university's modern facilities and strategic location make it an ideal venue for international conferences. With state-of-the-art conference halls, advanced technological infrastructure, and a beautiful campus environment, Maranatha provides the perfect setting for academic discourse and professional networking.</p>
                 </div>
 
-                <!-- Getting to Maranatha -->
                 <div class="venue-section">
-                    <h3 class="section-title">Getting to Maranatha</h3>
-                    <p>Universitas Kristen Maranatha is centrally located in Bandung and easily accessible through various transportation options:</p>
+                    <h3 class="section-title">Getting to Maranatha University</h3>
+                    <p>Universitas Kristen Maranatha is centrally located in Bandung with easy access via various transportation options:</p>
                     
                     <div class="transport-item">
-                        <div class="transport-title">From Husein Sastranegara International Airport:</div>
-                        <p>The university is approximately 6 km from the airport. Take a taxi (about 20-30 minutes depending on traffic) or book a ride-hailing service like Grab or Gojek.</p>
+                        <div class="transport-title">From Recommended Hotels (Pasteur Area):</div>
+                        <p>Most recommended hotels (Aston Pasteur, Rooms Inc., etc.) are located near the Cititrans pool on Jl. Dr. Djunjunan No. 153 (Pasteur).</p>
+                        <ul class="transport-list">
+                            <li><strong>Distance to Maranatha:</strong> Approximately 5-7 km</li>
+                            <li><strong>Travel time:</strong> 15-20 minutes by taxi or Grab/Gojek</li>
+                            <li><strong>Estimated fare:</strong> Rp. 30,000 - 50,000</li>
+                        </ul>
                     </div>
 
                     <div class="transport-item">
-                        <div class="transport-title">From Bandung Railway Station:</div>
-                        <p>The campus is about 4 km from Bandung's main railway station. You can take a taxi, or use ride-hailing services (approximately 15-20 minutes).</p>
+                        <div class="transport-title">From Bandung Train Station:</div>
+                        <p>If arriving via WHOOSH feeder train or regular train services:</p>
+                        <ul class="transport-list">
+                            <li><strong>Distance:</strong> Approximately 4 km from Bandung Station</li>
+                            <li><strong>Take a taxi or Grab/Gojek:</strong> 15-20 minutes, Rp. ~50,000</li>
+                        </ul>
                     </div>
 
                     <div class="transport-item">
-                        <div class="transport-title">From Jakarta via High-Speed Rail (WHOOSH):</div>
-                        <p>Take the WHOOSH high-speed train from Halim Station (Jakarta) to Tegalluar Station (Bandung). The journey takes only 15-20 minutes.</p>
+                        <div class="transport-title">From Padalarang Station (WHOOSH):</div>
+                        <p>Padalarang Station is the closest WHOOSH station to the conference venue:</p>
                         <ul class="transport-list">
-                            <li>Halim Station (Jakarta): WHOOSH Station integrated with Halim Perdanakusuma, East Jakarta</li>
-                            <li>Tegalluar Station (Bandung): Located in Tegalluar, Bojongsoang, about 15-20 minutes to city center</li>
-                            <li>From Tegalluar Station to Maranatha: Take a taxi or ride-hailing service (approximately 30-40 minutes depending on traffic)</li>
+                            <li><strong>Distance:</strong> Approximately 10-12 km</li>
+                            <li><strong>Recommended:</strong> Take taxi or Grab/Gojek directly to venue</li>
+                            <li><strong>Travel time:</strong> 20-25 minutes, Rp. 60,000 - 80,000</li>
+                            <li><strong>Alternative:</strong> Take free feeder train to Bandung Station, then taxi (adds 40 minutes total)</li>
                         </ul>
-                    </div>
-                    
-                    <div class="transport-item">
-                        <div class="transport-title">From Jakarta via Regular Train:</div>
-                        <p>Alternatively, you can take regular train services:</p>
-                        <ul class="transport-list">
-                            <li>From Gambir Station to Bandung Station (3 hours journey)</li>
-                            <li>From Bandung Station to Maranatha: 15-20 minutes by taxi or ride-hailing service</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="transport-item">
-                        <div class="transport-title">From Jakarta via Shuttle Services:</div>
-                        <p>Direct shuttle services are available from various points in Jakarta (3-4 hours depending on traffic):
-                        <ul class="transport-list">
-                            <li>Travel services from Blok M, Kuningan, Cibubur, and other major areas in Jakarta</li>
-                            <li>Popular shuttle services: Citi Trans, X Trans, Xtreme Shuttle</li>
-                        </ul>
-                        </p>
                     </div>
 
                     <div class="transport-item">
-                        <div class="transport-title">Local Transportation:</div>
+                        <div class="transport-title">Recommended Transportation Apps:</div>
                         <ul class="transport-list">
-                            <li>Taxis: Blue Bird Group, Grab Car</li>
-                            <li>Motorcycle taxis: Grab Bike, Gojek</li>
-                            <li>Public transportation: Angkot (public minivan) routes passing near the campus</li>
+                            <li><strong>Grab:</strong> Download from App Store or Google Play (ride-hailing app)</li>
+                            <li><strong>Gojek:</strong> Local ride-hailing app with competitive prices</li>
+                            <li><strong>Blue Bird:</strong> Traditional taxi service, can be booked via phone or app</li>
+                            <li><strong>Tip:</strong> Download and set up these apps before arrival in Indonesia</li>
                         </ul>
+                    </div>
+                </div>
+
+                <div class="venue-section">
+                    <div class="documents-section">
+                        <h3 class="documents-header">
+                            <i class="fas fa-file-alt"></i>
+                            Important Transportation Documents
+                        </h3>
+                        
+                        <div class="documents-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <a href="../assets/docs/Guidelines_on_how_to_get_from_Soekarno_Hatta_Airport_to_Bandung.pptx" 
+                                       class="document-card" download>
+                                        <div class="document-icon">
+                                            <i class="fas fa-plane-departure"></i>
+                                        </div>
+                                        <h5 class="document-title">From Soekarno-Hatta Airport to Bandung</h5>
+                                        <p class="document-description">Complete guide on transportation options from Jakarta's main airport to Bandung city</p>
+                                        <div class="document-action">
+                                            <i class="fas fa-download me-2"></i>Click to Download
+                                        </div>
+                                    </a>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <a href="../assets/docs/Guidelines_on_how_to_get_from_Bandung_to_Soekarno_Hatta_Airport.pptx" 
+                                       class="document-card" download>
+                                        <div class="document-icon">
+                                            <i class="fas fa-plane-arrival"></i>
+                                        </div>
+                                        <h5 class="document-title">From Bandung to Soekarno-Hatta Airport</h5>
+                                        <p class="document-description">Important information about return journey options and recommended travel times</p>
+                                        <div class="document-action">
+                                            <i class="fas fa-download me-2"></i>Click to Download
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Sidebar -->
             <div class="col-lg-4" id="sidebar"></div>
         </div>
     </div>

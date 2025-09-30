@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Things to Do in Bandung - HIS 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <style>
+        .attraction-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 130, 81, 0.2);
+        }
+        
+        .attraction-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            position: relative;
+        }
+        
+        .attraction-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #008251 0%, #00a566 100%);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .attraction-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .attraction-title {
+            color: #1a1a1a;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .attraction-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .attraction-info {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #008251;
+            font-size: 0.9rem;
+        }
+        
+        .info-item i {
+            font-size: 0.85rem;
+        }
+        
+        .category-section {
+            margin-bottom: 3rem;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #008251 0%, #00a566 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .category-header i {
+            font-size: 2rem;
+        }
+        
+        .category-header h3 {
+            margin: 0;
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+        
+        .intro-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .intro-section h2 {
+            color: #008251;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .intro-section p {
+            color: #6c757d;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <header class="hero-banner travel-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="display-4 text-white text-center">HIS 2025 @ Bandung</h1>
+                <h2 class="h2 text-white text-center">Things to Do in Bandung</h2>
+            </div>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="intro-section">
+                    <h2>Explore Bandung</h2>
+                    <p>Bandung, known as the "Paris of Java," offers a perfect blend of natural beauty, rich history, and modern attractions. During your visit for HIS 2025, take time to explore the city's stunning landscapes, vibrant culture, and delicious culinary scene.</p>
+                </div>
+
+                <!-- Natural Attractions -->
+                <div class="category-section">
+                    <div class="category-header">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Natural Attractions</h3>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="attraction-card">
+                                <div style="position: relative;">
+                                    <img src="../assets/images/tangkuban.jpg" alt="Tangkuban Perahu" class="attraction-image">
+                                    <span class="attraction-category">Nature</span>
+                                </div>
+                                <div class="attraction-content">
+                                    <h4 class="attraction-title">Tangkuban Perahu</h4>
+                                    <p class="attraction-description">An active stratovolcano with stunning crater views. Walk around the rim and experience the volcanic landscape with sulfuric vents and hot springs.</p>
+                                    <div class="attraction-info">
+                                        <span class="info-item"><i class="fas fa-clock"></i> 2-3 hours</span>
+                                        <span class="info-item"><i class="fas fa-car"></i> 30 km north</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="attraction-card">
+                                <div style="position: relative;">
+                                    <img src="../assets/images/domas.webp" alt="Kawah Domas" class="attraction-image">
+                                    <span class="attraction-category">Nature</span>
+                                </div>
+                                <div class="attraction-content">
+                                    <h4 class="attraction-title">Kawah Domas</h4>
+                                    <p class="attraction-description">Natural hot springs where you can boil eggs in volcanic water. A unique experience near Tangkuban Perahu volcano.</p>
+                                    <div class="attraction-info">
+                                        <span class="info-item"><i class="fas fa-clock"></i> 1-2 hours</span>
+                                        <span class="info-item"><i class="fas fa-car"></i> 32 km north</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+
+                <!-- Historical & Cultural -->
+                <div class="category-section">
+                    <div class="category-header">
+                        <i class="fas fa-landmark"></i>
+                        <h3>Historical & Cultural Sites</h3>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="attraction-card">
+                                <div style="position: relative;">
+                                    <img src="../assets/images/angklung.png" alt="Saung Angklung Udjo" class="attraction-image">
+                                    <span class="attraction-category">Heritage</span>
+                                </div>
+                                <div class="attraction-content">
+                                    <h4 class="attraction-title">Saung Angklung Mang Udjo</h4>
+                                    <p class="attraction-description">Cultural center showcasing traditional Sundanese music and bamboo angklung performances in a natural setting.</p>
+                                    <div class="attraction-info">
+                                        <span class="info-item"><i class="fas fa-clock"></i> 2 hours</span>
+                                        <span class="info-item"><i class="fas fa-car"></i> 8 km east</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="attraction-card">
+                                <div style="position: relative;">
+                                    <img src="../assets/images/geologi.webp" alt="Museum Geologi" class="attraction-image">
+                                    <span class="attraction-category">Museum</span>
+                                </div>
+                                <div class="attraction-content">
+                                    <h4 class="attraction-title">Museum Geologi Bandung</h4>
+                                    <p class="attraction-description">Geology museum featuring fossils, minerals, and volcanic exhibits. Learn about Indonesia's geological history.</p>
+                                    <div class="attraction-info">
+                                        <span class="info-item"><i class="fas fa-clock"></i> 1-2 hours</span>
+                                        <span class="info-item"><i class="fas fa-car"></i> City center</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="attraction-card">
+                                <div style="position: relative;">
+                                    <img src="../assets/images/braga.avif" alt="Braga Street" class="attraction-image">
+                                    <span class="attraction-category">Heritage</span>
+                                </div>
+                                <div class="attraction-content">
+                                    <h4 class="attraction-title">Braga Street</h4>
+                                    <p class="attraction-description">Historic street with Art Deco buildings, cafes, and galleries. The heart of Bandung's colonial heritage.</p>
+                                    <div class="attraction-info">
+                                        <span class="info-item"><i class="fas fa-clock"></i> 1-2 hours</span>
+                                        <span class="info-item"><i class="fas fa-walking"></i> Walkable</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="attraction-card">
+                                <div style="position: relative;">
+                                    <img src="../assets/images/asia.jpg" alt="Asia Afrika Museum" class="attraction-image">
+                                    <span class="attraction-category">Museum</span>
+                                </div>
+                                <div class="attraction-content">
+                                    <h4 class="attraction-title">Asia Afrika Museum</h4>
+                                    <p class="attraction-description">Historical museum commemorating the 1955 Asian-African Conference, a milestone in Third World solidarity.</p>
+                                    <div class="attraction-info">
+                                        <span class="info-item"><i class="fas fa-clock"></i> 1 hour</span>
+                                        <span class="info-item"><i class="fas fa-car"></i> City center</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shopping & Entertainment -->
+                <div class="category-section">
+                    <div class="category-header">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>Shopping & Entertainment</h3>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="attraction-card">
+                                <div style="position: relative;">
+                                    <img src="../assets/images/factory.jpg" alt="Factory Outlets" class="attraction-image">
+                                    <span class="attraction-category">Shopping</span>
+                                </div>
+                                <div class="attraction-content">
+                                    <h4 class="attraction-title">Dago & Riau Factory Outlets</h4>
+                                    <p class="attraction-description">Famous shopping districts with numerous factory outlets offering branded clothing at discounted prices.</p>
+                                    <div class="attraction-info">
+                                        <span class="info-item"><i class="fas fa-clock"></i> 2-3 hours</span>
+                                        <span class="info-item"><i class="fas fa-car"></i> City area</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="attraction-card">
+                                <div style="position: relative;">
+                                    <img src="../assets/images/tempayan.jpeg" alt="Culinary Tourism" class="attraction-image">
+                                    <span class="attraction-category">Culinary</span>
+                                </div>
+                                <div class="attraction-content">
+                                    <h4 class="attraction-title">Tempayan Bistro</h4>
+                                    <p class="attraction-description">Explore local Sundanese cuisine including batagor, siomay, nasi timbel, and the famous Bandung cafes.</p>
+                                    <div class="attraction-info">
+                                        <span class="info-item"><i class="fas fa-clock"></i> Varies</span>
+                                        <span class="info-item"><i class="fas fa-utensils"></i> Citywide</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4" id="sidebar">
+                <div class="time-display mb-4">
+                    <h4 class="time-heading">
+                        <i class="fas fa-clock"></i>
+                        Time in Bandung, Indonesia
+                    </h4>
+                    <div class="date-display" id="currentDate"></div>
+                    <div class="digital-clock" id="digitalClock">
+                        <div class="time-segment">
+                            <span id="hours">00</span>
+                            <span class="time-label">HOURS</span>
+                        </div>
+                        <span class="time-separator">:</span>
+                        <div class="time-segment">
+                            <span id="minutes">00</span>
+                            <span class="time-label">MINUTES</span>
+                        </div>
+                        <span class="time-separator">:</span>
+                        <div class="time-segment">
+                            <span id="seconds">00</span>
+                            <span class="time-label">SECONDS</span>
+                        </div>
+                        <div class="time-period" id="period">AM</div>
+                    </div>
+                </div>
+                
+                <div class="previous-conferences-box mb-4">
+                    <h4 class="conf-heading">
+                        <i class="fas fa-info-circle"></i>
+                        Travel Tips
+                    </h4>
+                    <div class="p-3">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bring a light jacket - Bandung can be cool</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Use Grab or Gojek for easy transportation</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Try local Sundanese cuisine</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Weekends are busier at attractions</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bargain at traditional markets</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="previous-conferences-box">
+                    <h4 class="conf-heading">
+                        <i class="fas fa-history"></i>
+                        Previous Conferences
+                    </h4>
+                    <div class="conferences-container">
+                        <ul class="conference-list" id="prevConferencesList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/supabase-config.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/clock.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePageComponents();
+            updateClock();
+            setInterval(updateClock, 1000);
+            renderPreviousConferences();
+        });
+    </script>
+</body>
+</html>

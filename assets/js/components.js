@@ -48,6 +48,7 @@ const components = {
                                 <li><a class="dropdown-item" href="pages/registration.html">Registration</a></li>
                                 <li><a class="dropdown-item" href="pages/conference-venue.html">Venue & Accommodation</a></li>
                                 <li><a class="dropdown-item" href="pages/travel-information.html">Travel Information</a></li>
+                                <li><a class="dropdown-item" href="pages/things-to-do.html">Things to Do in Bandung</a></li>
                                 <li><a class="dropdown-item" href="pages/hotel-booking.html">Hotel Booking</a></li>
                             </ul>
                         </li>
