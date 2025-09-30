@@ -118,9 +118,7 @@ const dbOperations = {
     
             const data = await response.json();
             console.log("Raw data from Supabase:", data);
-            
             const groupedMembers = data.reduce((acc, member) => {
-                // Skip members without valid role data
                 if (!member.organization_roles || !member.organization_roles.role_name) {
                     console.warn("Member missing role information:", member);
                     return acc;
@@ -159,7 +157,7 @@ const dbOperations = {
             }
     
             const data = await response.json();
-            return data[0]; // Return first venue info
+            return data[0]; 
         } catch (err) {
             console.error('Error fetching venue info:', err);
             return null;
