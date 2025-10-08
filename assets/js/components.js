@@ -10,7 +10,7 @@ const components = {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
                         <li class="nav-item">
                             <a class="nav-link active animate-link" href="index.html">HOME</a>
                         </li>
@@ -42,20 +42,60 @@ const components = {
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle animate-link" href="pages/participant.html" id="participantDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                PARTICIPANT INFORMATION
+                                PARTICIPANT INFO
                             </a>
                             <ul class="dropdown-menu animate slideIn" aria-labelledby="participantDropdown">
-                                <li><a class="dropdown-item" href="pages/registration.html">Registration</a></li>
                                 <li><a class="dropdown-item" href="pages/conference-venue.html">Venue & Accommodation</a></li>
                                 <li><a class="dropdown-item" href="pages/travel-information.html">Travel Information</a></li>
-                                <li><a class="dropdown-item" href="pages/things-to-do.html">Things to Do in Bandung</a></li>
-                                <li><a class="dropdown-item" href="pages/hotel-booking.html">Hotel Booking</a></li>
+                                <li><a class="dropdown-item" href="pages/things-to-do.html">Sight seeing and Culture Tour</a></li>
+                                <li><a class="dropdown-item" href="pages/hotel.html">Hotel Booking</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item ms-lg-3">
+                            <a class="btn-registration" href="pages/registration.html">
+                                <i class="fas fa-user-plus me-2"></i>REGISTRATION
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <style>
+            .btn-registration {
+                background: linear-gradient(135deg, #008251 0%, #00a566 100%);
+                color: white !important;
+                padding: 0.6rem 1.5rem;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.9rem;
+                display: inline-flex;
+                align-items: center;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 8px rgba(0, 130, 81, 0.3);
+                white-space: nowrap;
+            }
+            
+            .btn-registration:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 130, 81, 0.4);
+                background: linear-gradient(135deg, #00a566 0%, #008251 100%);
+                color: white !important;
+            }
+            
+            .btn-registration i {
+                font-size: 0.9rem;
+                color: white;
+            }
+            
+            @media (max-width: 991px) {
+                .btn-registration {
+                    margin-top: 1rem;
+                    margin-bottom: 0.5rem;
+                    justify-content: center;
+                }
+            }
+        </style>
     `,
     hotelBookingModal: `
         <div class="modal fade" id="hotelBookingModal" tabindex="-1" aria-labelledby="hotelBookingModalLabel" aria-hidden="true">
@@ -68,7 +108,7 @@ const components = {
                     </div>
                     <div class="modal-body text-center py-4">
                         <div class="registration-info-icon mb-3">
-                            <i class="fas fa-bed fa-3x text-success"></i>
+                            <i class="fas fa-bed fa-3x "></i>
                         </div>
                         <h4 class="mb-3">Hotel Booking Coming Soon</h4>
                         <p class="mb-4">Our hotel booking service for HIS 2025 is currently being prepared. We are partnering with hotels near the conference venue to provide special rates for conference attendees.</p>
@@ -124,18 +164,15 @@ const components = {
 </div>
     `,
 
-    // Updated footer component for components.js
     footer: `
     <footer class="footer w-100">
            <div class="container-fluid">
-               <!-- Conference Organization Section -->
                <div class="row mb-5">
                    <div class="col-12 text-center mb-4">
                        <h2 class="section-title text-center">Conference Organization</h2>
                        <div class="section-divider mx-auto mb-4"></div>
                    </div>
                    
-                   <!-- Organized by -->
                    <div class="col-md-6 mb-4">
                        <div class="organization-box">
                            <h3 class="organization-title">Organized by</h3>
@@ -150,26 +187,24 @@ const components = {
                        </div>
                    </div>
                    
-                   <!-- Co-organized by -->
                    <div class="col-md-6 mb-4">
-    <div class="organization-box">
-        <h3 class="organization-title">Co-organized by</h3>
-        <div class="organizer-logos">
-            <div class="organizer-logo-container">
-                <img src="assets/images/cologo.jpeg" alt="ITSB Logo" class="img-fluid">
-            </div>
-            <div class="organizer-logo-container">
-                <img src="assets/images/cologo2.png" alt="Binus Logo" class="img-fluid">
-            </div>
-            <div class="organizer-logo-container">
-                <img src="assets/images/cologo8.png" alt="Partner Logo" class="img-fluid">
-            </div>
-        </div>
-    </div>
-</div>
+                       <div class="organization-box">
+                           <h3 class="organization-title">Co-organized by</h3>
+                           <div class="organizer-logos">
+                               <div class="organizer-logo-container">
+                                   <img src="assets/images/cologo.jpeg" alt="ITSB Logo" class="img-fluid">
+                               </div>
+                               <div class="organizer-logo-container">
+                                   <img src="assets/images/cologo2.png" alt="Binus Logo" class="img-fluid">
+                               </div>
+                               <div class="organizer-logo-container">
+                                   <img src="assets/images/cologo8.png" alt="Partner Logo" class="img-fluid">
+                               </div>
+                           </div>
+                       </div>
+                   </div>
                </div>
                
-               <!-- Contact & Information Section -->
                <div class="row footer-info-section mx-0">
                    <div class="col-lg-4 mb-4">
                        <h3 class="footer-heading">About HIS 2025</h3>
@@ -204,13 +239,10 @@ const components = {
                            <li><a href="pages/conference-venue.html">Venue & Accommodation</a></li>
                            <li><a href="pages/registration.html">Registration</a></li>
                        </ul>
-                       
-                       
                    </div>
                </div>
            </div>
            
-           <!-- Copyright Bar - Full Width -->
            <div class="footer-bottom w-100">
                <div class="container-fluid">
                    <div class="row">
@@ -227,8 +259,6 @@ const components = {
    `
 };
 
-// Function to load component
-// Function to load component with proper path handling
 function loadComponent(elementId) {
     const element = document.getElementById(elementId);
     if (!element) return;
@@ -237,22 +267,18 @@ function loadComponent(elementId) {
     let componentHtml = components[elementId];
 
     if (isInPagesDirectory) {
-        // We're in the /pages/ directory, so adjust paths for that location
         componentHtml = componentHtml
             .replace(/href="index.html"/g, 'href="../index.html"')
             .replace(/href="pages\//g, 'href="')
             .replace(/src="assets\/images\//g, 'src="../assets/images/');
     } else {
-        // We're in the root directory, fix image paths for the home page
         componentHtml = componentHtml
             .replace(/src="..\/assets\/images\//g, 'src="assets/images/');
     }
 
     element.innerHTML = componentHtml;
 
-    // Initialize components after loading
     if (elementId === 'header') {
-        // Wait a bit to ensure DOM is ready
         setTimeout(updateActiveNavLink, 100);
     }
     if (elementId === 'sidebar') {
@@ -260,49 +286,40 @@ function loadComponent(elementId) {
     }
 }
 
-// Update active navigation link
 function updateActiveNavLink() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-link');
     const dropdownItems = document.querySelectorAll('.dropdown-item');
     
-    // Reset semua active state
     navLinks.forEach(link => link.classList.remove('active'));
     dropdownItems.forEach(item => item.classList.remove('active'));
 
-    // Set active untuk dropdown items
     dropdownItems.forEach(item => {
         const itemPath = item.getAttribute('href');
         if (itemPath && currentPath.includes(itemPath.split('/').pop())) {
             item.classList.add('active');
-            // Aktifkan parent dropdown
             const parentDropdown = item.closest('.dropdown').querySelector('.nav-link');
             if (parentDropdown) parentDropdown.classList.add('active');
         }
     });
 
-    // Set active untuk home jika di halaman utama
     if (currentPath === '/' || currentPath.endsWith('index.html')) {
         document.querySelector('a[href$="index.html"]')?.classList.add('active');
     }
 }
 
 async function renderConferences() {
-    // Cari elemen dengan id 'conferenceList'
     const conferenceList = document.getElementById('conferenceList');
     if (!conferenceList) return;
 
     try {
-        // Ambil data dari Supabase menggunakan fungsi getPreviousConferences
         const conferences = await window.dbOperations.getPreviousConferences();
         
-        // Jika tidak ada data, tampilkan pesan
         if (!conferences || conferences.length === 0) {
             conferenceList.innerHTML = '<li>No conference data available</li>';
             return;
         }
 
-        // Render data ke dalam list
         conferenceList.innerHTML = conferences
             .map(conf => `
                 <li>
@@ -313,7 +330,6 @@ async function renderConferences() {
             `).join('');
 
     } catch (err) {
-        // Tangani error jika ada
         console.error('Error:', err);
         conferenceList.innerHTML = '<li>Failed to load conference data</li>';
     }
@@ -322,14 +338,12 @@ async function renderConferences() {
 let hotelModalInstance = null;
 
 function initializeModals() {
-    // Initialize Hotel Booking Modal only
     if (!document.getElementById('hotelBookingModal')) {
         const modalDiv = document.createElement('div');
         modalDiv.innerHTML = components.hotelBookingModal;
         document.body.appendChild(modalDiv);
     }
 
-    // Handle hotel booking links
     document.querySelectorAll('a[href*="hotel-booking"], a[href*="Hotel Booking"]').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -337,31 +351,24 @@ function initializeModals() {
         });
     });
 
-    // Add modal cleanup handlers
     setupModalCleanup('hotelBookingModal');
 }
 
 function showModal(type) {
-    // Only handle hotel modal now
     const modalId = 'hotelBookingModal';
     const modalElement = document.getElementById(modalId);
     
-    // Dispose existing instance if any
     if (hotelModalInstance) {
         hotelModalInstance.dispose();
         hotelModalInstance = null;
     }
 
-    // Create new instance
     const newModal = new bootstrap.Modal(modalElement, {
         backdrop: 'static',
         keyboard: true
     });
 
-    // Store instance
     hotelModalInstance = newModal;
-
-    // Show modal
     newModal.show();
 }
 
@@ -370,24 +377,20 @@ function setupModalCleanup(modalId) {
     if (!modalElement) return;
 
     modalElement.addEventListener('hidden.bs.modal', function() {
-        // Clean up body classes
         document.body.classList.remove('modal-open');
         document.body.style.removeProperty('padding-right');
         
-        // Remove backdrop
         const backdrop = document.querySelector('.modal-backdrop');
         if (backdrop) {
             backdrop.remove();
         }
 
-        // Dispose modal instance
         if (modalId === 'hotelBookingModal' && hotelModalInstance) {
             hotelModalInstance.dispose();
             hotelModalInstance = null;
         }
     });
 
-    // Handle close button click
     const closeButton = modalElement.querySelector('.btn-success[data-bs-dismiss="modal"]');
     if (closeButton) {
         closeButton.addEventListener('click', function() {
@@ -399,9 +402,7 @@ function setupModalCleanup(modalId) {
     }
 }
 
-// Handle home page registration button
 document.addEventListener('DOMContentLoaded', function() {
-    // Fix links on home page
     const registerButtons = document.querySelectorAll('a[href="#register"]');
     registerButtons.forEach(button => {
         button.setAttribute('href', 'pages/registration.html');
@@ -411,6 +412,5 @@ document.addEventListener('DOMContentLoaded', function() {
         loadComponent(id);
     });
     
-    // Initialize hotel modal only
     initializeModals();
 });
